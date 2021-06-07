@@ -1,0 +1,27 @@
+.post-component {
+    margin: 2%;
+}
+
+.post-container {
+    display: flex;
+    flex-direction: row
+}
+
+.post-title {
+    display: inline;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-right: 1%;
+}
+
+.post-user {
+    display: inline;
+}
+
+.post-body {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 15px;
+    border: rgb(121, 121, 121) solid 2px !important;
+}
+

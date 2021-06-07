@@ -1,0 +1,46 @@
+.comment {
+    text-align: left;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    border: 1px solid black;
+}
+
+    .comment-hide {
+        background-color: rgba(63, 62, 62, 0.507);
+        cursor: pointer;
+    }
+
+    .comment-hide:hover {
+        background-color: rgba(184, 184, 184, 0.507);
+        color: black;
+    }
+
+    .comment-box {
+        padding: 0 1%;
+    }
+        .comment-hidden {
+            font-size: 0;
+            height: 0px;
+        }
+
+        .comment-info {
+            display: flex;
+            flex-direction: row;
+        }
+
+            .info-hidden {
+                color: rgb(201, 199, 199);
+                font-style: italic;
+            }
+
+        .comment-actions {
+            display: flex;
+            flex-direction: row;
+            color: rgb(148, 144, 144);
+        }
+
+            .comment-detail {
+                padding: 0 5px;
+            }

@@ -1,0 +1,15 @@
+.text-title-and-char {
+    display: flex ;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.char-count {
+    font-size: 1.1rem;
+    margin-top: 2%;
+}
+
+.char-warning {
+    font-size: 1.1rem;
+    color: red;
+}

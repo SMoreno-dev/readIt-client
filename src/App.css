@@ -1,0 +1,26 @@
+
+
+body {
+    background-color: rgba(0, 0, 0, 0.884) !important;
+    color: white !important;
+}
+
+.center {
+    text-align: center;
+    align-items: center;
+}
+
+.form-input {
+    display: block;
+    margin: 0 auto 7% auto;
+}
+
+.card {
+    background-color: rgb(12, 12, 12) !important;
+}
+
+.modal-content { 
+    background-color: rgb(34, 34, 34) !important;
+    color: white;
+    border: white 1px solid;
+}

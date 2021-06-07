@@ -1,0 +1,30 @@
+.vote-body {
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 70%;
+    font-weight: 400;
+    text-align: left;
+    margin: 0.5% 1% 0 0;
+}
+
+.votes {
+    cursor: default;
+}
+
+.up {
+    color: orange;
+    font-size: 2rem !important; 
+    font-weight: 900;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    transition: all .1s ease;
+}
+
+.down {
+    color: blue;
+    font-size: 2rem !important; 
+    font-weight: 900;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    transition: all .1s ease;
+}

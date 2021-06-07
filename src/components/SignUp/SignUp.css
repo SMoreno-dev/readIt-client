@@ -1,0 +1,27 @@
+.signup {
+    color: white;
+}
+
+.signup-card {
+    padding: 3% 0;
+}
+
+.signup-title-box {
+    margin: 3% 0 !important; 
+    padding: 5%;
+}
+
+.signup-title {
+    background-color: rgb(12, 12, 12);
+    padding: 5% 13% !important;
+}
+
+.signup-subtitle {
+    font-size: 2rem;
+}
+
+.signup-button {
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(32, 32, 32) !important;
+}

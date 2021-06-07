@@ -1,0 +1,17 @@
+.panel-modal {
+    color: black;
+    text-align: center;
+}
+
+.panel-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center !important;
+}
+
+.panel-message {
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 500;
+}
