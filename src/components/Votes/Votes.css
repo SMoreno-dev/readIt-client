@@ -3,8 +3,7 @@
     cursor: pointer;
     line-height: 70%;
     font-weight: 400;
-    text-align: left;
-    margin: 0.5% 1% 0 0;
+    margin: 0 1% 0 0;
 }
 
 .votes {
@@ -27,4 +26,13 @@
     -webkit-transition: all .1s ease;
     -moz-transition: all .1s ease;
     transition: all .1s ease;
+}
+
+.percentage-upvoted {
+    font-size: 0.8rem   
+}
+
+.percentage-hidden {
+    font-size: 0;
+    height: 0px;
 }

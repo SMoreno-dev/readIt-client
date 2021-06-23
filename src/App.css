@@ -24,3 +24,15 @@ body {
     color: white;
     border: white 1px solid;
 }
+
+.container {
+    margin-top: 3%;
+}
+
+.divider {
+    border-bottom: 2px solid rgb(58, 97, 156) !important;
+}
+
+.text-area {
+    white-space: pre-line;
+}

@@ -14,10 +14,7 @@ const SignUp = ({setCurrentUser, setId, logIn }) => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [user, setUser] = useState('');
-    const [error, setError] = useState({
-        error: false,
-        message: ''
-    });
+    const [error, setError] = useState({error: false, message: ''});
 
     const handleUser = (event) => {
         return setUser(event.target.value);

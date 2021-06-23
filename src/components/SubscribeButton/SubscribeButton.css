@@ -1,0 +1,21 @@
+.leave {
+    color: white;
+    max-height: 40px;
+    background-color: rgb(230, 61, 61);
+    box-shadow: none !important;
+}
+    .join:hover {
+        background-color: rgb(230, 61, 61);
+        border-color: rgb(230, 61, 61);
+    }
+
+.join {
+        color: white;
+        max-height: 40px;
+        box-shadow: none !important;
+    }
+
+    .leave:hover {
+        background-color: #0275d8;
+        border-color: #0275d8;
+    }

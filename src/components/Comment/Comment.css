@@ -5,6 +5,8 @@
     flex-direction: row;
     margin: auto;
     border: 1px solid black;
+    align-items: left;
+    width: 100%;
 }
 
     .comment-hide {

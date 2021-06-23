@@ -1,70 +1,154 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import {setVote} from "../../redux/actions/voteActions";
+import ErrorPanel from '../ErrorPanel/ErrorPanel';
 
 import './Votes.css';
 
-const Votes = ({status, setVote, currentVotes}) => {
+const Votes = () => {
 
-    const upvoteHandler = () => {
+    //State
+    const [error, setError] = useState({error: false, message: ''});
+    const [status, setStatus] = useState(null);
+    const [currentVotes, setVotes] = useState(0);
+    const [percentage, setPercentage] = useState(null);
+
+    //Params
+    const userId = localStorage.id;
+    const {postId} = useParams();
+
+    //useEffect function
+    const fetchVotes = async() => {
+        try {
+            const response = await fetch('http://localhost:3000/post/votes', {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    userId: userId,
+                    postId: postId
+                })
+            })
+
+            const parsedRes = await response.json();
+
+            if(response.status !== 200) {
+                return setError({
+                    error: true,
+                    message: parsedRes.message
+                })
+            }
+            setStatus(parsedRes.body.status);
+            setVotes(parsedRes.body.votes);
+            setPercentage(parsedRes.body.percentage);
+            return;
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => fetchVotes(), [])
+
+    //Submit votes
+    const submitVote = async (boolean) => {
+        try {
+            const response = await fetch('http://localhost:3000/post/vote', {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    userId: userId,
+                    postId: postId,
+                    vote: boolean
+                })
+            })
+
+            const parsedRes = await response.json();
+            if(response.status !== 200) {
+                return setError({
+                    error: true,
+                    message: parsedRes.message
+                })
+            } 
+
+        } catch (error) {
+            console.log(error);
+            throw new Error();
+        }
+    } 
+
+    //Vote Handlers
+    const upvoteHandler = async () => {
+        await submitVote(true);
         switch(status) {
+            //Already upvoted
             case true:
-                setVote('UNDO_UP');
-                break;
+                setVotes(currentVotes - 1);
+                return setStatus(null);
+
+            //Already Downvoted
             case false:
-                setVote('UNDO_DOWN');
-                setVote('UP');
-                break;
+                setVotes(currentVotes + 2);
+                return setStatus(true);
+
+            //No previous vote
             case null:
-                setVote('UP');
-                break;
+                setVotes(currentVotes + 1);
+                return setStatus(true);
+        
+            //Shouldn't happen
             default:
                 throw new Error();
         }
     }
 
-    const downvoteHandler = () => {
+    const downvoteHandler = async () => {
+        await submitVote(false);
         switch(status) {
-            case false:
-                setVote('UNDO_DOWN');
-                break;
+            //Already upvoted
             case true:
-                setVote('UNDO_UP');
-                setVote('DOWN');
-                break;
+                setVotes(currentVotes - 2);
+                return setStatus(false);
+
+            //Already Downvoted
+            case false:
+                setVotes(currentVotes + 1);
+                return setStatus(null);
+
+            //No previous vote
             case null:
-                setVote('DOWN');
-                break;
+                setVotes(currentVotes - 1);
+                return setStatus(false);
+        
+            //Shouldn't happen
             default:
-                throw new Error()
+                throw new Error();
         }
     }
 
+
     return(
         <div className="vote-body">
+            { error.error ? <ErrorPanel message={error.message} /> : null}
             <p 
                 className={status === true ? 'up' : '' }
-                onClick={() => upvoteHandler()}>
+                onClick={() => upvoteHandler()}
+            >
                 ↑
             </p>
             <p className="votes">{currentVotes}</p>
             <p 
                 className={status === false ? 'down' : '' }
-                onClick={() => downvoteHandler()}>
+                onClick={() => downvoteHandler()}
+            >
                 ↓
+            </p>
+            <p
+                className={percentage === null ? 'percentage-hidden' : 'percentage-upvoted'}
+            >
+                {`${percentage}% upvoted`}
             </p>
         </div>
     )
 }
 
-const mapStateToProps = ({votes}) => ({
-    currentVotes: votes.upvoted - votes.downvoted,
-    status: votes.status
-})
 
-const mapDispatchToProps = dispatch => ({
-    setVote: (type) => dispatch(setVote(type))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Votes);
+export default Votes;

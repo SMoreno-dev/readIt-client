@@ -14,10 +14,7 @@ const SignIn = ({setCurrentUser, logIn}) => {
     const history = useHistory();
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState({
-        error: false,
-        message: ''
-    })
+    const [error, setError] = useState({error: false, message: ''});
 
     const handleUser = (event) => {
         return setUser(event.target.value);
@@ -57,7 +54,7 @@ const SignIn = ({setCurrentUser, logIn}) => {
                 setCurrentUser(user);
                 localStorage.setItem('id', parsedResponse.id);
                 logIn();
-                return history.push('/profile');
+                history.push('/profile');
             }
             
         } catch(error) {

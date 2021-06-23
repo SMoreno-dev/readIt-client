@@ -1,0 +1,18 @@
+.subreddit-container {
+    padding: 2%;
+}
+
+.subreddit-title {
+    display: inline-block; 
+    cursor: pointer;
+    padding-bottom: 3%;
+}
+
+.subscribe-and-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subreddit-link {
+    text-decoration: none !important;
+}

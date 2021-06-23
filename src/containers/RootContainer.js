@@ -12,6 +12,8 @@ import SignUp from '../components/SignUp/SignUp';
 import SignIn from '../components/SignIn/SignIn';
 import Profile from '../components/Profile/Profile';
 import CreatePost from '../components/CreatePost/CreatePost';
+import Subreddit from '../components/Subreddit/Subreddit';
+import Post from '../components/Post/Post'
 
 
 
@@ -33,30 +35,17 @@ const RootContainer = () => {
     return(
         <Router>
             <Switch>
-                <Route exact path='/signup'> 
-                    <SignUp />
-                </Route>
-                <Route exact path='/signin'>
-                    <SignIn />
-                </Route>
+                <Route exact path='/signup' component={SignUp} />
+                <Route exact path='/signin' component={SignIn} />
                 <Route exact path="/profile"> 
                       {loggedIn === false ? <Redirect to='/signin' /> : <Profile />}
                 </Route>
-                <Route exact path="/submit"> 
-                    <CreatePost />
-                </Route>
+                <Route exact path="/submit" component={CreatePost} />
+                <Route exact path="/r/:subredditName" component={Subreddit} />
+                <Route exact path="/r/:subredditName/post=:postId" component={Post} />
             </Switch>
       </Router>
     )
 }
-
-// const mapStateToProps = state => ({
-//     loggedIn: state.user.loggedIn
-// })
-
-// const mapDispatchToProps = dispatch => ({
-//     logIn: () => dispatch(logIn()),
-//     logOut: () => dispatch(logOut())
-// })
 
 export default RootContainer;

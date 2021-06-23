@@ -3,17 +3,14 @@ import {connect} from 'react-redux'
 
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
 import TextArea from '../TextArea/TextArea';
-
 import { Button } from 'react-bootstrap';
+
 import './CreatePost.css'
 
 
 const CreatePost = ({post}) => {
-    //Error Panel State
-    const [error, setError] = useState({
-        error: false,
-        message: ''
-    })
+    //Error State
+    const [error, setError] = useState({error: false, message: ''});
 
     //Subscriptions, subreddit, post States
     const [subscriptions, getSubscriptions] = useState([]);
@@ -31,12 +28,16 @@ const CreatePost = ({post}) => {
                 })
             })
 
+            const parsedResponse = await response.json();
+
             if(response.status !== 200) {
-                console.log('Error');
-                throw new Error();
+                console.log(parsedResponse.message)
+                return setError({
+                    error: true,
+                    message: parsedResponse.message
+                })
 
             } else {
-                const parsedResponse = await response.json();
                 const parsedSubscriptions = await parsedResponse.subscriptions;
                 await getSubscriptions(parsedSubscriptions);
                 await setSubreddit(parsedSubscriptions[0]);
@@ -50,7 +51,6 @@ const CreatePost = ({post}) => {
     useEffect(() => fetchSubscription(), []);
 
     //Event Handlers
-
     const handleSubreddit = (e) => {
         setSubreddit(e.target.value)
     }
@@ -61,6 +61,13 @@ const CreatePost = ({post}) => {
 
     const handleSubmit = async() => {
         try {
+            if (subreddit.length === 0 || title.length === 0 || post.length === 0) {
+                return setError({
+                    error: true,
+                    message: 'You must select a subreddit and complete all fields in order to post.'
+                })
+            }
+
             const response = await fetch('http://localhost:3000/post/submit', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
