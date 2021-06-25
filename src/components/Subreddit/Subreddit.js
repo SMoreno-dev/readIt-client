@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
 import SubscribeButton from "../SubscribeButton/SubscribeButton";
-import { Container, Row, Col } from "react-bootstrap";
+import PostCollection from "../PostCollection/PostCollection";
 
+import { Container, Row, Col } from "react-bootstrap";
 import './Subreddit.css';
+
 
 const Subreddit = () => {
     //State
@@ -72,7 +75,7 @@ const Subreddit = () => {
 
             <Row>
                 <Col sm={9}>
-                    <h2>Post Collection</h2>
+                    <PostCollection subreddit = {subredditName} />
                 </Col>
 
                 <Col sm={3} className='subreddit-info'>
@@ -89,10 +92,12 @@ const Subreddit = () => {
                     </div>
 
                     <hr className="divider"/>
-                    <p>{subredditData.users} readers</p>
-                    <p>{subredditData.description}</p>
+                        <p>{subredditData.users} readers</p>
+                        <p>{subredditData.description}</p>
                     <hr className="divider"/>
-                    <p>created at {subredditData.createdAt.slice(0, 10)}</p>
+                        <p>created at {subredditData.createdAt.slice(0, 10)}</p>
+                    <hr className="divider"/>
+                        <Link to={`/submit/${subredditName}`}>Submit a New Post</Link>
                 </Col>
             </Row>
 

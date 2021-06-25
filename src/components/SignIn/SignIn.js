@@ -46,10 +46,8 @@ const SignIn = ({setCurrentUser, logIn}) => {
             console.log(parsedResponse)
     
             if(response.status !== 200) {
-                return setError({
-                    error: true,
-                    message: parsedResponse.message
-                })
+                return setError({error: true, message: parsedResponse.message});
+
             } else {
                 setCurrentUser(user);
                 localStorage.setItem('id', parsedResponse.id);
@@ -59,7 +57,7 @@ const SignIn = ({setCurrentUser, logIn}) => {
             
         } catch(error) {
             console.log('ERROR:', error);
-            throw new Error();
+            throw error;
         }
     }
 

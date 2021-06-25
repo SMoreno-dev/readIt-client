@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import {connect} from 'react-redux'
 
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
@@ -7,8 +8,10 @@ import { Button } from 'react-bootstrap';
 
 import './CreatePost.css'
 
-
 const CreatePost = ({post}) => {
+    //Params
+    const {subredditName} = useParams();
+
     //Error State
     const [error, setError] = useState({error: false, message: ''});
 
@@ -39,8 +42,8 @@ const CreatePost = ({post}) => {
 
             } else {
                 const parsedSubscriptions = await parsedResponse.subscriptions;
-                await getSubscriptions(parsedSubscriptions);
-                await setSubreddit(parsedSubscriptions[0]);
+                getSubscriptions(parsedSubscriptions);
+                setSubreddit(subredditName);
             }
 
         } catch (error) {

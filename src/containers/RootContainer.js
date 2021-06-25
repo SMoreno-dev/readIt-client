@@ -40,7 +40,7 @@ const RootContainer = () => {
                 <Route exact path="/profile"> 
                       {loggedIn === false ? <Redirect to='/signin' /> : <Profile />}
                 </Route>
-                <Route exact path="/submit" component={CreatePost} />
+                <Route exact path="/submit/:subredditName" component={CreatePost}/>
                 <Route exact path="/r/:subredditName" component={Subreddit} />
                 <Route exact path="/r/:subredditName/post=:postId" component={Post} />
             </Switch>

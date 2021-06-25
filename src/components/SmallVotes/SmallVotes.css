@@ -1,0 +1,27 @@
+.small-vote-body {
+    padding: 0.5% 3% 0 0;
+    cursor: pointer;
+    line-height: 55%;
+}
+
+.small-votes {
+    cursor: default;
+}
+
+.small-up {
+    color: orange;
+    font-size: 1.7rem !important; 
+    font-weight: 900;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    transition: all .1s ease;
+}
+
+.small-down {
+    color: blue;
+    font-size: 1.7rem !important; 
+    font-weight: 900;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    transition: all .1s ease;
+}

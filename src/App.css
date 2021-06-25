@@ -36,3 +36,7 @@ body {
 .text-area {
     white-space: pre-line;
 }
+
+.link {
+    text-decoration: none !important;
+}

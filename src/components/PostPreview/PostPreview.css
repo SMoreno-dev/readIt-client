@@ -1,0 +1,35 @@
+.preview-container {
+    margin: 2% 0;
+    background-color: rgb(41, 41, 41);
+    border-radius: 15px;
+    padding: 2%;
+}
+
+.preview-box {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.preview-title-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+    .preview-title {
+        line-height: 1.3rem;
+        text-decoration: none !important;
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .preview-details {
+        color: rgb(95, 133, 182)
+    }
+
+.preview-button {
+    margin-right: 5px;
+    box-shadow: none !important;
+    background-color: rgb(42, 72, 136);
+    border: 0px
+}

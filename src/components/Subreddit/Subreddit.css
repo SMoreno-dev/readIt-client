@@ -12,7 +12,3 @@
     display: flex;
     justify-content: space-between;
 }
-
-.subreddit-link {
-    text-decoration: none !important;
-}
