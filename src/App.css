@@ -1,8 +1,15 @@
-
-
 body {
     background-color: rgba(0, 0, 0, 0.884) !important;
     color: white !important;
+}
+
+input, textarea, select {
+    border: none;
+    border-radius: 7px;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
 }
 
 .center {

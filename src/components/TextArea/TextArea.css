@@ -13,3 +13,9 @@
     font-size: 1.1rem;
     color: red;
 }
+
+.text-label {
+    display: inline-block;
+    margin-bottom: 3%;
+    border-bottom: 2px solid rgb(58, 97, 156) !important;
+}
