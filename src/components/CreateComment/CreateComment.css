@@ -1,0 +1,22 @@
+.create-comment {
+    background-color: rgb(17, 17, 17) !important;
+    padding: 1%;
+    margin: 0 0 2%;
+    border-radius: 10px;
+}
+
+.comment-input-box {
+    display: inline-block;
+}
+
+.comment-input {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: 100% !important
+}
+
+
+.comment-button {
+    margin: 1% 0 2%;
+    align-items: flex-end;
+}

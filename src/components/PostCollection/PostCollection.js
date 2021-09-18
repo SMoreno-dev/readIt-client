@@ -11,10 +11,11 @@ const PostCollection = ({subreddit}) => {
     const [error, setError] = useState({error: false, message: ''});
     const [previews, setPreviews] = useState([]);
     const [orderByVotes, setOrderBy] = useState(false)
-    const [limit, setLimit] = useState(2);
+    const [limit, setLimit] = useState(10);
 
     //useEffect Function
     const fetchPostPreviews = async(sub) => {
+        setPreviews([]);
         try {
             const response = await fetch('http://localhost:3000/post/previews', {
                 method: "POST",
@@ -31,6 +32,7 @@ const PostCollection = ({subreddit}) => {
                 console.log('ERROR');
                 return setError({error: true, message: parsedRes.message})
             }
+            console.log(parsedRes.body)
             return setPreviews(parsedRes.body);
 
         } catch (error) {
@@ -56,18 +58,20 @@ const PostCollection = ({subreddit}) => {
                 </Button>
             </div>
             {
-                previews.map((p, i) => (
-                    <PostPreview
-                        key = {i}
-                        postId = {p.postId}
-                        subreddit = {p.subreddit}
-                        title = {p.title}
-                        user = {p.user}
-                        votes = {p.votes}
-                        lastVote = {p.lastVote}
-                        date = {p.date}
-                    />
-                ))
+                previews ?
+                    previews.map((p, i) => (
+                        <PostPreview
+                            key = {i}
+                            postId = {p.postId}
+                            subreddit = {p.subreddit}
+                            title = {p.title}
+                            user = {p.user}
+                            votes = {p.votes}
+                            lastVote = {p.lastVote}
+                            date = {p.date}
+                        />
+                    ))
+                : null
             }
             <Button
                 className='preview-button mb-5'

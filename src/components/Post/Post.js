@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
 import Votes from '../Votes/Votes';
-import Comment from '../Comment/Comment';
+import CommentCollection from '../CommentCollection/CommentCollection';
+import CreateComment from '../CreateComment/CreateComment';
 import { Link } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
 import './Post.css';
+
 
 const Post = () => {
     //Params
@@ -95,7 +97,8 @@ const Post = () => {
 
                 </div>
             </div>
-            <Comment postId={postId}/>
+            <CreateComment postId={postId}/>
+            <CommentCollection postId={postId}/>
         </Container>
     )
 }

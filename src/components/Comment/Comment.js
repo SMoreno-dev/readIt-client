@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
+import CreateReply from '../CreateReply/CreateReply';
+import Reply from '../Reply/Reply';
 import './Comment.css';
 
-const Comment = () => {
-    const [hidden, setHidden] = useState(false)
+const Comment = ({id, user, body, date, parentHidden}) => {
+    const [hidden, setHidden] = useState(false);
+    const [reply, setReply] = useState(false);
+
+    if(parentHidden === true) {
+        setHidden(true);
+    }
 
     return(
         <div className='comment'>
@@ -17,20 +24,27 @@ const Comment = () => {
 
             <div className='comment-box'>
                 <div className={!hidden ? 'comment-info' : 'comment-info info-hidden'}>
-                    <p className='comment-detail'>Noobmaster69 120 points</p>
+                    <p className='comment-data'>
+                        <a className='comment-user'>{user}</a> 
+                        {`, ${date.slice(0, 10)} T${date.slice (11, 19)}`}
+                        </p>
                 </div>
 
                 <div className={!hidden ? '' : 'comment-hidden'}>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sed ante at neque facilisis semper ac eget velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam lacinia dictum iaculis. Etiam in suscipit diam, in volutpat lacus. Integer mattis metus ut volutpat iaculis. Proin posuere justo massa, a luctus sapien hendrerit vitae. Aliquam tincidunt lacus non hendrerit gravida. Nulla facilisi. Sed malesuada consequat magna at suscipit. Pellentesque bibendum et lacus a rutrum. Donec eget laoreet nibh, ac elementum nibh. Morbi quis ornare sapien, gravida aliquet ex. Ut sit amet magna arcu. Quisque velit nunc, tincidunt non magna ac, viverra pretium magna.</p>
+                    <p>{body}</p>
                     <div className='comment-actions'>
-                        <p className='comment-detail'>reply</p>
-                        <p className='comment-detail'>delete</p>
+                        <p 
+                            onClick={() => setReply(true)}
+                            className='comment-action'>
+                                reply
+                        </p>
+                        <p className='comment-action'>delete</p>
                     </div>
                 </div>
+                { reply && !hidden ? <CreateReply commentId={id} /> : null }
+                { !hidden ? <Reply id={id} /> : null }
 
             </div>
-
-
         </div>
     )
 }

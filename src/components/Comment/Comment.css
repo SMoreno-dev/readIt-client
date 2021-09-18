@@ -7,6 +7,7 @@
     border: 1px solid black;
     align-items: left;
     width: 100%;
+    margin-bottom: 15px;
 }
 
     .comment-hide {
@@ -20,7 +21,8 @@
     }
 
     .comment-box {
-        padding: 0 1%;
+        padding: 2px 15px;
+        width: 100%;
     }
         .comment-hidden {
             font-size: 0;
@@ -32,17 +34,27 @@
             flex-direction: row;
         }
 
+        .comment-data {
+            display: flex
+        }
             .info-hidden {
                 color: rgb(201, 199, 199);
                 font-style: italic;
             }
 
+        
         .comment-actions {
             display: flex;
             flex-direction: row;
             color: rgb(148, 144, 144);
         }
 
-            .comment-detail {
-                padding: 0 5px;
+            .comment-action {
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+            .comment-action:hover {
+                text-decoration: underline;
+                color: rgb(255, 255, 255);
             }
