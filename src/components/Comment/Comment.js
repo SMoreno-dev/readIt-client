@@ -1,26 +1,62 @@
 import React, {useState} from 'react';
+
+import ErrorPanel from '../ErrorPanel/ErrorPanel';
 import CreateReply from '../CreateReply/CreateReply';
 import Reply from '../Reply/Reply';
+
 import './Comment.css';
 
-const Comment = ({id, user, body, date, parentHidden}) => {
+const Comment = ({id, user, body, date, parentHidden, canDelete}) => {
+    //State
     const [hidden, setHidden] = useState(false);
     const [reply, setReply] = useState(false);
+
+    //Error State
+    const [error, setError] = useState({error: false, message: ''});
 
     if(parentHidden === true) {
         setHidden(true);
     }
 
+    const handleDelete = async() => {
+        try {
+            const response = await fetch('http://localhost:3000/comment/delete-comment', {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    userId: localStorage.id,
+                    commentId: id
+                })
+            })
+
+            const parsedRes = await response.json();
+
+            if(response.status !== 200) {
+                return setError({
+                    error: true,
+                    message: parsedRes.message
+                })
+            }
+
+            console.log(parsedRes.message);
+            window.location.reload();
+
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+
+    }
+
     return(
         <div className='comment'>
+            { error.error ? <ErrorPanel message={error.message} /> : null}
             <div 
                 className='comment-hide'
                 onClick={!hidden ? () => setHidden(true) : () => setHidden(false)}
             >
                 {!hidden ? <p>[-]</p> : <p>[+]</p>}
             </div>
-
-            {/* <CommentVote /> */}
 
             <div className='comment-box'>
                 <div className={!hidden ? 'comment-info' : 'comment-info info-hidden'}>
@@ -38,7 +74,17 @@ const Comment = ({id, user, body, date, parentHidden}) => {
                             className='comment-action'>
                                 reply
                         </p>
-                        <p className='comment-action'>delete</p>
+
+                        {
+                            canDelete === true ?
+                                <p 
+                                onClick={() => handleDelete()}
+                                className='comment-action'>
+                                    delete
+                                </p>
+                            : null
+                        }
+
                     </div>
                 </div>
                 { reply && !hidden ? <CreateReply commentId={id} /> : null }

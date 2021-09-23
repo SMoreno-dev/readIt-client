@@ -23,9 +23,10 @@ const Post = () => {
         postUser: "",
         postTitle: "",
         postText: "",
-        postDate: ""
+        postDate: "",
+        canDelete: false
     })
-    const {postUser, postTitle, postText, postDate} = postInfo;
+    const {postUser, postTitle, postText, postDate, canDelete} = postInfo;
 
     //useEffect function
     const fetchPost = async (sub, post) => {
@@ -49,13 +50,14 @@ const Post = () => {
                     message: parsedRes.message
                 })
             }
-            
-            const { postUser, postTitle, postText, postDate } = parsedRes.body;
-            return setPost({
+
+            const { postUser, postTitle, postText, postDate, canDelete } = parsedRes.body;
+            setPost({
                 postUser,
                 postTitle,
                 postText,
-                postDate
+                postDate,
+                canDelete
             })
             
         } catch (error) {
@@ -64,6 +66,36 @@ const Post = () => {
         }
     }
     useEffect(() => fetchPost(subredditName, postId), []);
+
+    //Delete handler
+    const handleDelete = async() => {
+        try {
+            const response = await fetch('http://localhost:3000/post/delete', {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    userId: localStorage.id,
+                    postId
+                })
+            })
+
+            const parsedRes = await response.json();
+
+            if(response.status !== 200) {
+                return setError({
+                    error: true,
+                    message: parsedRes.message
+                })
+            }
+
+            console.log(parsedRes.message);
+            window.location.reload();
+
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 
     return (
         <Container className='post-component'>
@@ -94,11 +126,21 @@ const Post = () => {
                             {postText}
                         </p>
                     </div>
-
+                    {           
+                        canDelete === true ?
+                            <p 
+                                onClick={() => handleDelete()}
+                                className='delete-post'>
+                                    delete
+                            </p>
+                        : null
+                    }
                 </div>
             </div>
+
             <CreateComment postId={postId}/>
             <CommentCollection postId={postId}/>
+
         </Container>
     )
 }

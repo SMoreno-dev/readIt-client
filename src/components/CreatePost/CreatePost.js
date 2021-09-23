@@ -38,7 +38,7 @@ const CreatePost = ({post}) => {
                 return setError({
                     error: true,
                     message: parsedResponse.message
-            })
+                })
 
             } else {
                 const parsedSubscriptions = await parsedResponse.subscriptions;

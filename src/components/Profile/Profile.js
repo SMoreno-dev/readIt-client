@@ -1,41 +1,41 @@
 import React, {useState} from "react";
-import { connect } from "react-redux";
+import { useParams } from "react-router";
+
+import ErrorPanel from '../ErrorPanel/ErrorPanel';
+import PostCollection from "../PostCollection/PostCollection";
 
 import './Profile.css'
 
-const Profile = ({user}) => {
+const Profile = () => {
+    //Error State
+    const [error, setError] = useState({error: false, message: ''});
 
-    const [selected, select] = useState(null);
-    //{selected} true = comment, false = Posts, null = none
+    //Profile username
+    const {user} = useParams();
+    if(!user) {
+        setError({
+            error: true,
+            message: 'User does not exist'
+        })
+    }
     
     return(
         <> 
+            { error.error ? <ErrorPanel message={error.message} /> : null}
             <div className='user-profile'>
-                <div className='profile-tabs'>
+                <div className='user-posts'>
                     <p 
                         onClick={() => window.location.reload()}
                         className='profile-title'
-                        >Test
+                        >{`Posts from ${user}`}
                     </p>
-                    <p 
-                        className={selected ? 'selected-tab' : 'profile-tab'}
-                        onClick={() => select(true)}
-                        >Comments
-                    </p>
-                    <p 
-                        className={selected === false ? 'selected-tab' : 'profile-tab'}
-                        onClick={() => select(false)}
-                        >Posts
-                    </p>
+                    <PostCollection profile = {user} />
                 </div>
-               
+
             </div>
+
         </>
     )
 }
 
-const mapDispatchToProps = state => ({
-    user: state.user.user
-})
-
-export default connect(mapDispatchToProps)(Profile);
+export default Profile;

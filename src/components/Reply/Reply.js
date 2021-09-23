@@ -18,7 +18,8 @@ const Reply = ({id}) => {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
-                    commentId
+                    commentId,
+                    userId: localStorage.id
                 })
             })
 
@@ -49,6 +50,7 @@ const Reply = ({id}) => {
                             user={data.user}
                             body={data.body}
                             date={data.created}
+                            canDelete={data.canDelete}
                         /> 
                     ))   
             }

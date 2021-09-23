@@ -6,15 +6,17 @@ import PostPreview  from '../PostPreview/PostPreview';
 import { Button } from 'react-bootstrap';
 import './PostCollection.css';
 
-const PostCollection = ({subreddit}) => {
+const PostCollection = ({subreddit, profile}) => {
     //Error State
     const [error, setError] = useState({error: false, message: ''});
+
+    //Post collection state
     const [previews, setPreviews] = useState([]);
     const [orderByVotes, setOrderBy] = useState(false)
     const [limit, setLimit] = useState(10);
 
-    //useEffect Function
-    const fetchPostPreviews = async(sub) => {
+    //useEffect Subreddit Function
+    const fetchSubredditPreviews = async(sub) => {
         setPreviews([]);
         try {
             const response = await fetch('http://localhost:3000/post/previews', {
@@ -40,7 +42,43 @@ const PostCollection = ({subreddit}) => {
             throw error;
         }
     }
-    useEffect(() => fetchPostPreviews(subreddit), [limit, orderByVotes]);
+
+    //useEffect Profile Function
+    const fetchProfilePreviews = async(p) => {
+        setPreviews([]);
+        try {
+            const response = await fetch('http://localhost:3000/user/posts', {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    userId: localStorage.id,
+                    profileUser: p,
+                    limit: limit,
+                    orderByVotes: orderByVotes
+                })
+            })
+            const parsedRes = await response.json();
+            if(response.status !== 200) {
+                console.log('ERROR');
+                return setError({error: true, message: parsedRes.message})
+            }
+            console.log(parsedRes.body)
+            return setPreviews(parsedRes.body);
+
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+
+    //Profile or Subreddit useEffect
+    useEffect(() => {
+        if(!profile) {
+            return fetchSubredditPreviews(subreddit);
+        } else {
+            return fetchProfilePreviews(profile);
+        }
+    }, [limit, orderByVotes]);
 
     return (
         <div>

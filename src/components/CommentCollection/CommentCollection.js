@@ -19,7 +19,8 @@ const CommentCollection = ({postId}) => {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
-                    postId
+                    postId,
+                    userId: localStorage.id
                 })
             })
             const parsedRes = await response.json();
@@ -49,6 +50,7 @@ const CommentCollection = ({postId}) => {
                             user={c.user}
                             body={c.text}
                             date={c.date}
+                            canDelete={c.canDelete}
                         />
                     ))
                 : null

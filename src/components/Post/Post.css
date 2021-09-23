@@ -44,6 +44,16 @@
     border-radius: 10px;
     border: rgb(121, 121, 121) solid 2px !important;
 }
+    
+    .delete-post {
+        cursor: pointer;
+        text-align: right;
+        padding: 1% 0;
+    }
+
+    .delete-post:hover {
+        text-decoration: underline;
+    }
 
 .subreddit-link {
     text-decoration: none; 
