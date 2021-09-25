@@ -20,6 +20,7 @@ const Subreddit = () => {
         createdAt: '',
         isSubscribed: false
     });
+    const [previews, setPreviews] = useState([]);
 
     //Subreddit url param
     const {subredditName} = useParams();
@@ -87,7 +88,11 @@ const Subreddit = () => {
                             {subredditData.name}
                         </h2>
                         
-                        <SubscribeButton isSubscribed={subredditData.isSubscribed} />
+                        {
+                            !localStorage.id ? null 
+                            : <SubscribeButton isSubscribed={subredditData.isSubscribed} />
+                        }
+                        
 
                     </div>
 

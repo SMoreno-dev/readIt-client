@@ -56,6 +56,11 @@ const CreateReply = ({commentId, reply}) => {
         }
     }
 
+    //Not logged in
+    if(!localStorage.id) {
+        return <Redirect to='/signin'/>;
+    } 
+    
     return(
         <div className='create-comment'>
             {/* Error Panel */}

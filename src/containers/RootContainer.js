@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 //Components
+import Frontpage from '../components/Frontpage/Frontpage';
 import SignUp from '../components/SignUp/SignUp';
 import SignIn from '../components/SignIn/SignIn';
 import Profile from '../components/Profile/Profile';
@@ -15,15 +16,11 @@ import CreatePost from '../components/CreatePost/CreatePost';
 import Subreddit from '../components/Subreddit/Subreddit';
 import Post from '../components/Post/Post'
 
-
-
 const RootContainer = () => {
-
-
-
     return(
         <Router>
             <Switch>
+                <Route exact path='/' component={Frontpage} />
                 <Route exact path='/signup' component={SignUp} />
                 <Route exact path='/signin' component={SignIn} />
                 <Route exact path="/user/:user" component={Profile}/>

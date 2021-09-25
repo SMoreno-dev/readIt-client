@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
 import TextArea from '../TextArea/TextArea';
 import { Button } from 'react-bootstrap';
+import { Redirect } from 'react-router';
 
 import './CreatePost.css'
 
@@ -64,6 +65,7 @@ const CreatePost = ({post}) => {
 
     const handleSubmit = async() => {
         try {
+
             if (subreddit.length === 0 || title.length === 0 || post.length === 0) {
                 return setError({
                     error: true,
@@ -99,6 +101,11 @@ const CreatePost = ({post}) => {
         }
     }
 
+    //Not logged in
+    if(!localStorage.id) {
+        return <Redirect to='/signin'/>;
+    } 
+    
     return(
         <> 
             <div className='container-fluid create-post'>

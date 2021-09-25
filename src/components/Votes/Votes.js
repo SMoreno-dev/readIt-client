@@ -124,20 +124,19 @@ const Votes = () => {
         }
     }
 
-
     return(
         <div className="vote-body">
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <p 
                 className={status === true ? 'up' : '' }
-                onClick={() => upvoteHandler()}
+                onClick={!userId ? null : () => upvoteHandler()}
             >
                 ↑
             </p>
             <p className="votes">{currentVotes}</p>
             <p 
                 className={status === false ? 'down' : '' }
-                onClick={() => downvoteHandler()}
+                onClick={!userId ? null : () => downvoteHandler()}
             >
                 ↓
             </p>

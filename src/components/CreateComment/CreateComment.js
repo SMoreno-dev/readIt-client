@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Redirect } from 'react-router';
 
 import TextArea from '../TextArea/TextArea';
@@ -9,16 +10,13 @@ import { Button } from 'react-bootstrap';
 
 import './CreateComment.css';
 
-const CreateComment = ({postId, comment}) => {
+const CreateComment = ({history, postId, comment}) => {
     //Error State
     const [error, setError] = useState({error: false, message: ''});
 
     //Submit Comment
     const handleSubmit = async() => {
         try {
-            if(!localStorage.id) {
-                return <Redirect to='/signin' />
-            }
 
             if (comment.length === 0) {
                 return setError({
@@ -55,7 +53,7 @@ const CreateComment = ({postId, comment}) => {
             throw error;
         }
     }
-
+    
     return(
         <div className='create-comment'>
             {/* Error Panel */}
@@ -74,7 +72,7 @@ const CreateComment = ({postId, comment}) => {
                 <Button 
                     className='comment-button'
                     variant="secondary"
-                    onClick={handleSubmit}>
+                    onClick={!localStorage.id ? () => history.push("/signin") : handleSubmit}>
                         Submit    
                 </Button>
             </div>
@@ -86,4 +84,4 @@ const mapStateToProps = state => ({
     comment: state.user.text
 })
 
-export default connect(mapStateToProps)(CreateComment);
+export default withRouter(connect(mapStateToProps)(CreateComment))
