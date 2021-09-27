@@ -57,12 +57,14 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                     orderByVotes: orderByVotes
                 })
             })
+
             const parsedRes = await response.json();
             if(response.status !== 200) {
                 console.log('ERROR');
                 return setError({error: true, message: parsedRes.message})
             }
-            return setPreviews(parsedRes.body.posts);
+            console.log(parsedRes)
+            return setPreviews(parsedRes.body);
 
         } catch (error) {
             console.log(error);

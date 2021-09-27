@@ -44,6 +44,7 @@ const Profile = () => {
                 })
 
             } else {
+                console.log(parsedResponse.body)
                 setSubscriptions(parsedResponse.body);
             }
 
