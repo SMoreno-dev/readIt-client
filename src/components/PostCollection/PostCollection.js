@@ -62,8 +62,7 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                 console.log('ERROR');
                 return setError({error: true, message: parsedRes.message})
             }
-            console.log(parsedRes.body)
-            return setPreviews(parsedRes.body);
+            return setPreviews(parsedRes.body.posts);
 
         } catch (error) {
             console.log(error);
@@ -141,12 +140,19 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                     ))
                 : null
             }
-            <Button
-                className='preview-button mb-5'
-                onClick = {() => setLimit(limit + 10)}
-            >
-                Load More
-            </Button>
+
+            {
+                previews.length < 10 
+                    ? null            
+                    :    
+                        <Button
+                            className='preview-button mb-5'
+                            onClick = {() => setLimit(limit + 10)}
+                        >
+                            Load More
+                        </Button>
+            }
+
         </div>
     )
 }

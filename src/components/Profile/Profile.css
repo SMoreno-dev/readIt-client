@@ -1,11 +1,31 @@
 .user-profile {
-    margin: 2%;
+    margin: 3%;
+    display: flex;
 }
 
 .profile-title {
     font-size: 2rem;
     cursor: pointer;
 }
+
+
+.user-subscriptions {
+    padding: 2%;
+    text-align: right;
+    width: 30vw;
+}
+    .user-subscriptions-box {
+        text-align: center;
+        display: inline-block;
+        font-weight: 600;
+        background-color: rgb(54, 54, 54);
+        padding: 5%;
+        border-radius: 15px;
+    }
+
+        .user-subscription {
+            display: block;
+        }
 
 .user-posts {
     width: 70vw

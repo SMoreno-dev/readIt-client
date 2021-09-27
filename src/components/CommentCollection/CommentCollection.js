@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
 
 import Comment from '../Comment/Comment';
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
@@ -53,7 +52,7 @@ const CommentCollection = ({postId}) => {
                             canDelete={c.canDelete}
                         />
                     ))
-                : null
+                    : null
             }
         </div>
     )

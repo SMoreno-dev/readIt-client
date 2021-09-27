@@ -97,14 +97,14 @@ const SmallVotes = ({postId, votes, value}) => {
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <p 
                 className={status === true ? 'small-up' : '' }
-                onClick={() => upvoteHandler()}
+                onClick={!localStorage.id ? null : () => upvoteHandler()}
             >
                 ↑
             </p>
             <p className="small-votes">{currentVotes}</p>
             <p 
                 className={status === false ? 'small-down' : '' }
-                onClick={() => downvoteHandler()}
+                onClick={!localStorage.id ? null : () => downvoteHandler()}
             >
                 ↓
             </p>

@@ -65,7 +65,7 @@ const SubscribeButton = ({isSubscribed}) => {
         <>
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <Button
-                className={!subscribed ? 'join btn-primary shadow-none' : 'leave btn-danger shadow-none'}
+                className={subscribed ? 'join btn-primary shadow-none' : 'leave btn-danger shadow-none'}
                 onClick={() => buttonHandler()}
                 >
                 <p>{!subscribed ? 'join' : 'leave'}</p>

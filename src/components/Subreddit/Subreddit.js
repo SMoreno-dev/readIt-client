@@ -20,7 +20,6 @@ const Subreddit = () => {
         createdAt: '',
         isSubscribed: false
     });
-    const [previews, setPreviews] = useState([]);
 
     //Subreddit url param
     const {subredditName} = useParams();

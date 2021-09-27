@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { withRouter } from 'react-router';
 import { useParams } from 'react-router-dom';
 import {connect} from 'react-redux'
 
@@ -9,7 +10,7 @@ import { Redirect } from 'react-router';
 
 import './CreatePost.css'
 
-const CreatePost = ({post}) => {
+const CreatePost = ({history, post}) => {
     //Params
     const {subredditName} = useParams();
 
@@ -17,7 +18,7 @@ const CreatePost = ({post}) => {
     const [error, setError] = useState({error: false, message: ''});
 
     //Subscriptions, subreddit, post States
-    const [subscriptions, getSubscriptions] = useState([]);
+    const [subscriptions, setSubscriptions] = useState([]);
     const [subreddit, setSubreddit] = useState("");
     const [title, setTitle] = useState("");
 
@@ -42,8 +43,7 @@ const CreatePost = ({post}) => {
                 })
 
             } else {
-                const parsedSubscriptions = await parsedResponse.subscriptions;
-                getSubscriptions(parsedSubscriptions);
+                setSubscriptions(parsedResponse.body);
                 setSubreddit(subredditName);
             }
 
@@ -85,16 +85,17 @@ const CreatePost = ({post}) => {
             })
 
             const parsedResponse = await response.json();
-            console.log('Response:', parsedResponse)
 
             if(response.status !== 200) {
                 return setError({
                     error: true,
                     message: parsedResponse.message
                 })
+            
             } else {
-                console.log(parsedResponse)
+               history.push(`/r/${subreddit}/post=${parsedResponse.postId}`); 
             }
+
         } catch (error) {
             console.log(error);
             throw new Error();
@@ -165,4 +166,4 @@ const mapStateToProps = state => ({
     post: state.user.text
 })
 
-export default connect(mapStateToProps)(CreatePost);
+export default withRouter(connect(mapStateToProps)(CreatePost));
