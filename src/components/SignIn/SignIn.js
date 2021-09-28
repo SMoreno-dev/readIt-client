@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux";
-import { useHistory , Link} from 'react-router-dom';
-
-import {setCurrentUser, logIn} from '../../redux/actions/userActions';
+import { useHistory , Link } from 'react-router-dom';
 
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
 
@@ -10,12 +7,15 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import './SignIn.css';
 
 
-const SignIn = ({setCurrentUser, logIn}) => {
+const SignIn = () => {
     const history = useHistory();
+
+    //State
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState({error: false, message: ''});
 
+    //Handlers
     const handleUser = (event) => {
         return setUser(event.target.value);
     }
@@ -43,16 +43,14 @@ const SignIn = ({setCurrentUser, logIn}) => {
             })
     
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
-    
+
             if(response.status !== 200) {
                 return setError({error: true, message: parsedResponse.message});
 
             } else {
-                setCurrentUser(user);
                 localStorage.setItem('id', parsedResponse.id);
-                logIn();
-                history.push('/profile');
+                localStorage.setItem('user', parsedResponse.nick);
+                history.push('/');
             }
             
         } catch(error) {
@@ -110,9 +108,4 @@ const SignIn = ({setCurrentUser, logIn}) => {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-    logIn: () => dispatch(logIn())
-})
-
-export default connect(null, mapDispatchToProps)(SignIn);
+export default SignIn;

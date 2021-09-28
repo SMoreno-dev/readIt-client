@@ -1,16 +1,22 @@
 import React, {useState, useEffect} from 'react';
+
+//Router
 import { withRouter } from 'react-router';
 import { useParams } from 'react-router-dom';
+
+//Redux
 import {connect} from 'react-redux'
+import { setText } from '../../redux/actions/userActions';
 
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
 import TextArea from '../TextArea/TextArea';
+
+//Css
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router';
-
 import './CreatePost.css'
 
-const CreatePost = ({history, post}) => {
+const CreatePost = ({history, post, setText}) => {
     //Params
     const {subredditName} = useParams();
 
@@ -93,7 +99,8 @@ const CreatePost = ({history, post}) => {
                 })
             
             } else {
-               history.push(`/r/${subreddit}/post=${parsedResponse.postId}`); 
+                setText('');
+                history.push(`/r/${subreddit}/post=${parsedResponse.postId}`); 
             }
 
         } catch (error) {
@@ -166,4 +173,8 @@ const mapStateToProps = state => ({
     post: state.user.text
 })
 
-export default withRouter(connect(mapStateToProps)(CreatePost));
+const mapDispatchToProps = dispatch => ({
+    setText: (text) => dispatch(setText(text))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost));

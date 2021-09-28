@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+
+//Redux
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { Redirect } from 'react-router';
+import { setText } from '../../redux/actions/userActions';
+
+//Router
+import { withRouter, useHistory } from 'react-router';
 
 import TextArea from '../TextArea/TextArea';
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
@@ -10,9 +14,12 @@ import { Button } from 'react-bootstrap';
 
 import './CreateComment.css';
 
-const CreateComment = ({history, postId, comment}) => {
+const CreateComment = ({postId, comment, setText}) => {
     //Error State
     const [error, setError] = useState({error: false, message: ''});
+
+    //History
+    const history = useHistory();
 
     //Submit Comment
     const handleSubmit = async() => {
@@ -45,7 +52,7 @@ const CreateComment = ({history, postId, comment}) => {
                 })
             }
 
-            console.log(parsedRes.message);
+            setText('');
             window.location.reload();
 
         } catch (error) {
@@ -84,4 +91,8 @@ const mapStateToProps = state => ({
     comment: state.user.text
 })
 
-export default withRouter(connect(mapStateToProps)(CreateComment))
+const mapDispatchToProps = dispatch => ({
+    setText: (text) => dispatch(setText(text))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateComment))

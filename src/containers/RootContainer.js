@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 //Components
+import NavBar from '../components/NavBar/NavBar';
 import Frontpage from '../components/Frontpage/Frontpage';
 import SignUp from '../components/SignUp/SignUp';
 import SignIn from '../components/SignIn/SignIn';
@@ -16,6 +17,7 @@ import Post from '../components/Post/Post'
 const RootContainer = () => {
     return(
         <Router>
+            <Route path='/' component={NavBar} />
             <Switch>
                 <Route exact path='/' component={Frontpage} />
                 <Route exact path='/signup' component={SignUp} />
