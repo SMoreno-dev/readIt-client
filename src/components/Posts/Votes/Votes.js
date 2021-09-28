@@ -1,31 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 
-import './SmallVotes.css';
+import './Votes.css';
 
-const SmallVotes = ({postId, votes, value}) => {
+const Votes = () => {
+
     //State
     const [error, setError] = useState({error: false, message: ''});
     const [status, setStatus] = useState(null);
     const [currentVotes, setVotes] = useState(0);
+    const [percentage, setPercentage] = useState(null);
 
-    //useEffect
-    useEffect(() => {
-        setStatus(value);
-        setVotes(votes);
-    }, [setVotes])
+    //Params
+    const userId = localStorage.id;
+    const {postId} = useParams();
+
+    //useEffect function
+    const fetchVotes = async() => {
+        try {
+            const response = await fetch('http://localhost:3000/post/votes', {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    userId: userId,
+                    postId: postId
+                })
+            })
+
+            const parsedRes = await response.json();
+
+            if(response.status !== 200) {
+                return setError({
+                    error: true,
+                    message: parsedRes.message
+                })
+            }
+            setStatus(parsedRes.body.status);
+            setVotes(parsedRes.body.votes);
+            setPercentage(parsedRes.body.percentage);
+            return;
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => fetchVotes(), [])
 
     //Submit votes
-    const submitVote = async (postId, value) => {
+    const submitVote = async (boolean) => {
         try {
             const response = await fetch('http://localhost:3000/post/vote', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
-                    userId: localStorage.id,
+                    userId: userId,
                     postId: postId,
-                    vote: value
+                    vote: boolean
                 })
             })
 
@@ -45,7 +77,7 @@ const SmallVotes = ({postId, votes, value}) => {
 
     //Vote Handlers
     const upvoteHandler = async () => {
-        await submitVote(postId, true);
+        await submitVote(true);
         switch(status) {
             //Already upvoted
             case true:
@@ -69,7 +101,7 @@ const SmallVotes = ({postId, votes, value}) => {
     }
 
     const downvoteHandler = async () => {
-        await submitVote(postId, false);
+        await submitVote(false);
         switch(status) {
             //Already upvoted
             case true:
@@ -92,24 +124,30 @@ const SmallVotes = ({postId, votes, value}) => {
         }
     }
 
-    return (
-        <div className="small-vote-body">
+    return(
+        <div className="vote-body">
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <p 
-                className={status === true ? 'small-up' : '' }
-                onClick={!localStorage.id ? null : () => upvoteHandler()}
+                className={status === true ? 'up' : '' }
+                onClick={!userId ? null : () => upvoteHandler()}
             >
                 ↑
             </p>
-            <p className="small-votes">{currentVotes}</p>
+            <p className="votes">{currentVotes}</p>
             <p 
-                className={status === false ? 'small-down' : '' }
-                onClick={!localStorage.id ? null : () => downvoteHandler()}
+                className={status === false ? 'down' : '' }
+                onClick={!userId ? null : () => downvoteHandler()}
             >
                 ↓
+            </p>
+            <p
+                className={percentage === null ? 'percentage-hidden' : 'percentage-upvoted'}
+            >
+                {`${percentage}% upvoted`}
             </p>
         </div>
     )
 }
 
-export default SmallVotes;
+
+export default Votes;

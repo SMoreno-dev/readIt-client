@@ -1,38 +1,43 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
 
-import TextArea from '../TextArea/TextArea';
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
+//Redux
+import { connect } from 'react-redux';
+import { setText } from '../../../redux/actions/userActions';
+
+//Router
+import { withRouter, useHistory } from 'react-router';
+
+import TextArea from '../../TextArea/TextArea';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 import { Button } from 'react-bootstrap';
 
 
-import './CreateReply.css';
+import './CreateComment.css';
 
-const CreateReply = ({commentId, reply}) => {
+const CreateComment = ({postId, comment, setText}) => {
     //Error State
     const [error, setError] = useState({error: false, message: ''});
+
+    //History
+    const history = useHistory();
 
     //Submit Comment
     const handleSubmit = async() => {
         try {
-            if(!localStorage.id) {
-                return <Redirect to='/signin' />
-            }
 
-            if (reply.length === 0) {
+            if (comment.length === 0) {
                 return setError({
                     error: true,
-                    message: 'Reply must include some text'
+                    message: 'Comment must include some text'
                 })
             }
 
-            const response = await fetch('http://localhost:3000/comment/submit-reply', {
+            const response = await fetch('http://localhost:3000/comment/submit-comment', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
-                    prevCommentId: commentId,
-                    reply,
+                    postId,
+                    comment,
                     userId: localStorage.id
                 })
             })
@@ -47,7 +52,7 @@ const CreateReply = ({commentId, reply}) => {
                 })
             }
 
-            console.log(parsedRes.message);
+            setText('');
             window.location.reload();
 
         } catch (error) {
@@ -55,11 +60,6 @@ const CreateReply = ({commentId, reply}) => {
             throw error;
         }
     }
-
-    //Not logged in
-    if(!localStorage.id) {
-        return <Redirect to='/signin'/>;
-    } 
     
     return(
         <div className='create-comment'>
@@ -68,7 +68,7 @@ const CreateReply = ({commentId, reply}) => {
 
             <div className='comment-input-box'>
                 <TextArea 
-                    title='Reply'
+                    title='Leave a comment'
                     name='comment-input'
                     limit={5000}
                     cols="5000"
@@ -79,7 +79,7 @@ const CreateReply = ({commentId, reply}) => {
                 <Button 
                     className='comment-button'
                     variant="secondary"
-                    onClick={handleSubmit}>
+                    onClick={!localStorage.id ? () => history.push("/signin") : handleSubmit}>
                         Submit    
                 </Button>
             </div>
@@ -88,7 +88,11 @@ const CreateReply = ({commentId, reply}) => {
 }
 
 const mapStateToProps = state => ({
-    reply: state.user.text
+    comment: state.user.text
 })
 
-export default connect(mapStateToProps)(CreateReply);
+const mapDispatchToProps = dispatch => ({
+    setText: (text) => dispatch(setText(text))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateComment))

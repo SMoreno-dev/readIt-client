@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 import Votes from '../Votes/Votes';
-import CommentCollection from '../CommentCollection/CommentCollection';
-import CreateComment from '../CreateComment/CreateComment';
+import CommentCollection from '../../Comments/CommentCollection/CommentCollection';
+import CreateComment from '../../Comments/CreateComment/CreateComment';
 import { Link } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';

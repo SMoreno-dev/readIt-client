@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useParams } from "react-router";
 
 import ErrorPanel from '../ErrorPanel/ErrorPanel';
-import PostCollection from "../PostCollection/PostCollection";
+import PostCollection from "../Posts/PostCollection/PostCollection";
 import { Link } from "react-router-dom";
 
 import './Profile.css'

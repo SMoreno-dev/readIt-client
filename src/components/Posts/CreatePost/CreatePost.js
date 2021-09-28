@@ -6,10 +6,10 @@ import { useParams } from 'react-router-dom';
 
 //Redux
 import {connect} from 'react-redux'
-import { setText } from '../../redux/actions/userActions';
+import { setText } from '../../../redux/actions/userActions';
 
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
-import TextArea from '../TextArea/TextArea';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
+import TextArea from '../../TextArea/TextArea';
 
 //Css
 import { Button } from 'react-bootstrap';

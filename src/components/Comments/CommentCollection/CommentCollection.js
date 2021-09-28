@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Comment from '../Comment/Comment';
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 
 import './CommentCollection.css';
 

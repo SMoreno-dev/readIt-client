@@ -1,5 +1,5 @@
 import React from "react";
-import PostCollection from "../PostCollection/PostCollection";
+import PostCollection from "../Posts/PostCollection/PostCollection";
 
 const Frontpage = () => {
     return (

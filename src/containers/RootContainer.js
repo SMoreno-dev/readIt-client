@@ -10,9 +10,9 @@ import Frontpage from '../components/Frontpage/Frontpage';
 import SignUp from '../components/SignUp/SignUp';
 import SignIn from '../components/SignIn/SignIn';
 import Profile from '../components/Profile/Profile';
-import CreatePost from '../components/CreatePost/CreatePost';
+import CreatePost from '../components/Posts/CreatePost/CreatePost';
 import Subreddit from '../components/Subreddit/Subreddit';
-import Post from '../components/Post/Post'
+import Post from '../components/Posts/Post/Post';
 
 const RootContainer = () => {
     return(

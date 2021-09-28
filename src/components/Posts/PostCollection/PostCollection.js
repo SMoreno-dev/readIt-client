@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 import PostPreview  from '../PostPreview/PostPreview';
 
 import { Button } from 'react-bootstrap';

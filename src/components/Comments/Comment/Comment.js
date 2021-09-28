@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 import CreateReply from '../CreateReply/CreateReply';
 import Reply from '../Reply/Reply';
 
