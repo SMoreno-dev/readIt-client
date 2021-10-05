@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 
 import './SubscribeButton.css';
 

@@ -13,7 +13,7 @@ import SignUp from '../components/SignUp/SignUp';
 import SignIn from '../components/SignIn/SignIn';
 import Profile from '../components/Profile/Profile';
 import CreatePost from '../components/Posts/CreatePost/CreatePost';
-import Subreddit from '../components/Subreddit/Subreddit';
+import Subreddit from '../components/Subreddits/Subreddit/Subreddit';
 import Post from '../components/Posts/Post/Post';
 import SubredditList from '../components/Subreddits/SubredditList/SubredditList';
 
