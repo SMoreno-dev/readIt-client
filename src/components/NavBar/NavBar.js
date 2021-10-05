@@ -3,17 +3,15 @@ import './NavBar.css';
 
 import { useHistory } from "react-router";
 
-import { Button } from "react-bootstrap";
-
 const NavBar = () => {
     const history = useHistory();
     
     const handleSignIn = () => {
         if(!localStorage.id) {
-            return history.push('/signin');
+            return history.push('/reddit-clone-client/signin');
         } else {
             localStorage.removeItem('id');
-            return history.push('/signin');
+            return history.push('/reddit-clone-client/signin');
         }
     }
 
@@ -29,7 +27,7 @@ const NavBar = () => {
             <div className='nav-end'>
                 <p 
                     className='nav-user'
-                    onClick={() => history.push(`/user/${localStorage.user}`)}
+                    onClick={() => history.push(`/reddit-clone-client/user/${localStorage.user}`)}
                 >
                     {!localStorage.id ? null : localStorage.user}
                 </p>
