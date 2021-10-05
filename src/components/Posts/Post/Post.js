@@ -31,7 +31,7 @@ const Post = () => {
     //useEffect function
     const fetchPost = async (sub, post) => {
         try {
-            const response = await fetch('http://localhost:3000/post/fetch', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/post/fetch', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -70,7 +70,7 @@ const Post = () => {
     //Delete handler
     const handleDelete = async() => {
         try {
-            const response = await fetch('http://localhost:3000/post/delete', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/post/delete', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

@@ -14,7 +14,7 @@ const Reply = ({id}) => {
     //useEffect Function
     const getReplies = async (commentId) => {
         try {
-            const response = await fetch('http://localhost:3000/comment/get-replies', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/comment/get-replies', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

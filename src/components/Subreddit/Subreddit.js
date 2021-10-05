@@ -27,7 +27,7 @@ const Subreddit = () => {
     //useEffect function
     const fetchSubreddit = async (subredditName) => {
         try {
-            const response = await fetch('http://localhost:3000/subreddit/data', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/subreddit/data', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

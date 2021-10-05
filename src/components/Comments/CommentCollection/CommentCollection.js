@@ -14,7 +14,7 @@ const CommentCollection = ({postId}) => {
     //useEffect Function
     const fetchComments = async (postId) => {
         try {
-            const response = await fetch('http://localhost:3000/comment/get-comments', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/comment/get-comments', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

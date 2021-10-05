@@ -20,7 +20,7 @@ const Votes = () => {
     //useEffect function
     const fetchVotes = async() => {
         try {
-            const response = await fetch('http://localhost:3000/post/votes', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/post/votes', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -51,7 +51,7 @@ const Votes = () => {
     //Submit votes
     const submitVote = async (boolean) => {
         try {
-            const response = await fetch('http://localhost:3000/post/vote', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/post/vote', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

@@ -33,7 +33,7 @@ const SignIn = () => {
                 })
             }
             
-            const response = await fetch('http://localhost:3000/auth/signin', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/auth/signin', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

@@ -32,7 +32,7 @@ const CreateComment = ({postId, comment, setText}) => {
                 })
             }
 
-            const response = await fetch('http://localhost:3000/comment/submit-comment', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/comment/submit-comment', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

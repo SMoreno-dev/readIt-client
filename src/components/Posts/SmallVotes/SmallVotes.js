@@ -19,7 +19,7 @@ const SmallVotes = ({postId, votes, value}) => {
     //Submit votes
     const submitVote = async (postId, value) => {
         try {
-            const response = await fetch('http://localhost:3000/post/vote', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/post/vote', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

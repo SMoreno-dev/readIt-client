@@ -20,7 +20,7 @@ const Comment = ({id, user, body, date, parentHidden, canDelete}) => {
 
     const handleDelete = async() => {
         try {
-            const response = await fetch('http://localhost:3000/comment/delete-comment', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/comment/delete-comment', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

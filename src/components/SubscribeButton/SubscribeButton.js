@@ -19,7 +19,7 @@ const SubscribeButton = ({isSubscribed}) => {
 
     const postSubscription = async(boolean) => {
         try {
-            const response = await fetch('http://localhost:3000/subreddit/subscribe', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/subreddit/subscribe', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

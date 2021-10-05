@@ -19,7 +19,7 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
     const fetchSubredditPreviews = async(sub) => {
         setPreviews([]);
         try {
-            const response = await fetch('http://localhost:3000/post/previews', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/post/previews', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -47,7 +47,7 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
     const fetchProfilePreviews = async(p) => {
         setPreviews([]);
         try {
-            const response = await fetch('http://localhost:3000/user/posts', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/user/posts', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -76,7 +76,7 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
     const fetchFrontpageFeed = async() => {
         setPreviews([]);
         try {
-            const response = await fetch('http://localhost:3000/frontpage/feed', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/frontpage/feed', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

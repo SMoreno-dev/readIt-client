@@ -26,7 +26,7 @@ const CreateReply = ({commentId, reply}) => {
                 })
             }
 
-            const response = await fetch('http://localhost:3000/comment/submit-reply', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/comment/submit-reply', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
