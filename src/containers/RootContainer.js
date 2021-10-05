@@ -4,6 +4,8 @@ import {
   Route
 } from 'react-router-dom';
 
+import { Redirect } from 'react-router';
+
 //Components
 import NavBar from '../components/NavBar/NavBar';
 import Frontpage from '../components/Frontpage/Frontpage';
@@ -19,6 +21,7 @@ const RootContainer = () => {
         <Router>
             <Route path='/' component={NavBar} />
             <Switch>
+                <Route exact path='/'> {<Redirect to='/reddit-clone-client' />} </Route>
                 <Route exact path='/reddit-clone-client' component={Frontpage} />
                 <Route exact path='/signup' component={SignUp} />
                 <Route exact path='/signin' component={SignIn} />
