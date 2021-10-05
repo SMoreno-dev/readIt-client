@@ -19,7 +19,7 @@ const RootContainer = () => {
         <Router>
             <Route path='/' component={NavBar} />
             <Switch>
-                <Route exact path='/' component={Frontpage} />
+                <Route exact path='/reddit-clone-client' component={Frontpage} />
                 <Route exact path='/signup' component={SignUp} />
                 <Route exact path='/signin' component={SignIn} />
                 <Route exact path="/user/:user" component={Profile}/>
