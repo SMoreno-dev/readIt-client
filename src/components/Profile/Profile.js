@@ -78,7 +78,7 @@ const Profile = () => {
                                     <Link 
                                         className={'user-subscription'}
                                         key={i} 
-                                        to={`/reddit-clone-client/r/${e}`}>
+                                        to={`/r/${e}`}>
                                             {e}
                                     </Link>
                                 ))   

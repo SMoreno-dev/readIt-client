@@ -46,7 +46,7 @@ const SubredditList = () => {
                     <div className='s-list-element'>
                         <Link
                             className='s-list-link'
-                            to={`/reddit-clone-client/r/${s.title}`}>
+                            to={`r/${s.title}`}>
                                 {s.title}
                         </Link>
                         <p className='s-list-link-info'>

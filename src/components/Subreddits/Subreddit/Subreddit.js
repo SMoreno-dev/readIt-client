@@ -101,7 +101,7 @@ const Subreddit = () => {
                     <hr className="divider"/>
                         <p>created at {subredditData.createdAt.slice(0, 10)}</p>
                     <hr className="divider"/>
-                        <Link to={`/reddit-clone-client/submit/${subredditName}`}>Submit a New Post</Link>
+                        <Link to={`/submit/${subredditName}`}>Submit a New Post</Link>
                 </Col>
             </Row>
 

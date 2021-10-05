@@ -97,7 +97,7 @@ const SignIn = () => {
                                 Sign In
                             </Button>
 
-                            <Link to='/reddit-clone-client/signup'>I don't have an account</Link>
+                            <Link to='/signup'>I don't have an account</Link>
 
                         </form>
                     </Card>

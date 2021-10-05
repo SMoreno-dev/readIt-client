@@ -102,7 +102,7 @@ const Post = () => {
             {/* Error Panel */}
             { error.error ? <ErrorPanel message={error.message} /> : null}
 
-            <Link className="subreddit-link" to={`/reddit-clone-client/r/${subredditName}`}>{subredditName}</Link>
+            <Link className="subreddit-link" to={`/r/${subredditName}`}>{subredditName}</Link>
             <hr className="divider"/>
 
             <div className='post-container'>

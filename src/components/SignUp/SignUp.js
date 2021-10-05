@@ -116,7 +116,7 @@ const SignUp = () => {
                                 Sign Up
                             </Button>
             
-                            <Link to='/reddit-clone-client/signin'>I already have an account</Link>
+                            <Link to='/signin'>I already have an account</Link>
 
                         </form>
                     </Card>

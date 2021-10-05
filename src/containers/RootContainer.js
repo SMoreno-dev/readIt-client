@@ -22,15 +22,14 @@ const RootContainer = () => {
         <Router>
             <Route path='/' component={NavBar} />
             <Switch>
-                <Route exact path='/'> {<Redirect to='/reddit-clone-client' />} </Route>
-                <Route exact path='/reddit-clone-client' component={Frontpage} />
-                <Route exact path='/reddit-clone-client/signup' component={SignUp} />
-                <Route exact path='/reddit-clone-client/signin' component={SignIn} />
-                <Route exact path="/reddit-clone-client/user/:user" component={Profile}/>
-                <Route exact path="/reddit-clone-client/submit/:subredditName" component={CreatePost}/>
-                <Route exact path="/reddit-clone-client/r/:subredditName" component={Subreddit} />
-                <Route exact path="/reddit-clone-client/r/:subredditName/post=:postId" component={Post} />
-                <Route exact path="/reddit-clone-client/subreddits" component={SubredditList} />
+                <Route exact path='/' component={Frontpage} />
+                <Route exact path='/signup' component={SignUp} />
+                <Route exact path='/signin' component={SignIn} />
+                <Route exact path="/user/:user" component={Profile}/>
+                <Route exact path="/submit/:subredditName" component={CreatePost}/>
+                <Route exact path="/r/:subredditName" component={Subreddit} />
+                <Route exact path="/r/:subredditName/post=:postId" component={Post} />
+                <Route exact path="/subreddits" component={SubredditList} />
             </Switch>
       </Router>
     )

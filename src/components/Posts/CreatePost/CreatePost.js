@@ -100,7 +100,7 @@ const CreatePost = ({history, post, setText}) => {
             
             } else {
                 setText('');
-                history.push(`/reddit-clone-client/r/${subreddit}/post=${parsedResponse.postId}`); 
+                history.push(`r/${subreddit}/post=${parsedResponse.postId}`); 
             }
 
         } catch (error) {
@@ -111,7 +111,7 @@ const CreatePost = ({history, post, setText}) => {
 
     //Not logged in
     if(!localStorage.id) {
-        return <Redirect to='/reddit-clone-client/signin'/>;
+        return <Redirect to='/signin'/>;
     } 
     
     return(

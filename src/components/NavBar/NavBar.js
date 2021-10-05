@@ -10,10 +10,10 @@ const NavBar = () => {
     
     const handleSignIn = () => {
         if(!localStorage.id) {
-            return history.push('/reddit-clone-client/signin');
+            return history.push('/signin');
         } else {
             localStorage.removeItem('id');
-            return history.push('/reddit-clone-client/signin');
+            return history.push('/signin');
         }
     }
 
@@ -30,7 +30,7 @@ const NavBar = () => {
                 <p className='nv-separator'>{" || "}</p>
                 <div 
                     className='nv-subreddits'
-                    onClick={() => history.push('/reddit-clone-client/subreddits')}
+                    onClick={() => history.push('/subreddits')}
                     >
                     {`subreddits`}
                 </div>

@@ -79,7 +79,7 @@ const CreateComment = ({postId, comment, setText}) => {
                 <Button 
                     className='comment-button'
                     variant="secondary"
-                    onClick={!localStorage.id ? () => history.push("/reddit-clone-client/signin") : handleSubmit}>
+                    onClick={!localStorage.id ? () => history.push("/signin") : handleSubmit}>
                         Submit    
                 </Button>
             </div>

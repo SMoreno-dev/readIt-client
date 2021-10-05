@@ -61,7 +61,7 @@ const Comment = ({id, user, body, date, parentHidden, canDelete}) => {
             <div className='comment-box'>
                 <div className={!hidden ? 'comment-info' : 'comment-info info-hidden'}>
                     <p className='comment-data'>
-                        <a className='comment-user'>{user}</a> 
+                        <p className='comment-user'>{user}</p> 
                         {`, ${date.slice(0, 10)} T${date.slice (11, 19)}`}
                         </p>
                 </div>
