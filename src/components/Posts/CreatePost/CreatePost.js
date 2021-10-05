@@ -71,11 +71,17 @@ const CreatePost = ({history, post, setText}) => {
 
     const handleSubmit = async() => {
         try {
+            if(!subscriptions[0]) {
+                return setError({
+                    error:true,
+                    message: 'You must be subscribed to at least one subreadIt in order to post'
+                })
+            }
 
             if (subreddit.length === 0 || title.length === 0 || post.length === 0) {
                 return setError({
                     error: true,
-                    message: 'You must select a subreddit and complete all fields in order to post.'
+                    message: 'You must select a subreadIt and complete all fields in order to post.'
                 })
             }
 
@@ -123,7 +129,7 @@ const CreatePost = ({history, post, setText}) => {
                 <div className='create-post-form'>
                     <form>
                         <div className='select-subreddit'>
-                            <label htmlFor="subreddits" className='select-subreddit-label'>Choose A Subreddit:</label>
+                            <label htmlFor="subreddits" className='select-subreddit-label'>Choose a subreadIt:</label>
                             <select value={subreddit} onChange={handleSubreddit}>
                                 {
                                     subscriptions.map((e, i) => <option key={i}>{e}</option>)
