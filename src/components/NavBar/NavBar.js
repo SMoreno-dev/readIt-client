@@ -1,4 +1,6 @@
 import React from "react";
+
+import logo from './title-logo.png';
 import './NavBar.css';
 
 import { useHistory } from "react-router";
@@ -18,12 +20,13 @@ const NavBar = () => {
     return(
         <div className='nv-container'>
             <div className='logo-and-subreddits'>
-                <div 
+                <img
+                    src={logo}
                     className='readit-logo'
                     onClick={() => history.push('/')}
+                    alt='logo'
                 >
-                    readIt
-                </div>
+                </img>
                 <p className='nv-separator'>{" || "}</p>
                 <div 
                     className='nv-subreddits'
