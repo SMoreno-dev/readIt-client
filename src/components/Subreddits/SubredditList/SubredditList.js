@@ -38,7 +38,7 @@ const SubredditList = () => {
         <div className='s-list-box'>
         { error.error ? <ErrorPanel message={error.message} /> : null}
 
-            <h2>List of subreddits</h2>
+            <h2>List of subreadIts</h2>
 
             <div className='s-list-body'>
             {

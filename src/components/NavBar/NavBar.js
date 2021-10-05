@@ -32,7 +32,7 @@ const NavBar = () => {
                     className='nv-subreddits'
                     onClick={() => history.push('/subreddits')}
                     >
-                    {`subreddits`}
+                    {`subreadIts`}
                 </div>
             </div>
 

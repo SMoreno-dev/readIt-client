@@ -25,8 +25,8 @@ const PostPreview = ({postId, subreddit, title, user, date, votes, lastVote}) =>
                     <br />
 
                     <p className='preview-details'>
-                    submitted to <Link to={`/r/${subreddit}`}>{subreddit + " "}</Link> 
-                    by <Link to={`/user/${user}`}>{user}</Link> {`at ${date.slice(0,10)}`} 
+                        submitted to <Link to={`/r/${subreddit}`}>{subreddit}</Link> 
+                        {" by "} <Link to={`/user/${user}`}>{user}</Link> {`at ${date.slice(0,10)}`} 
                     </p>
                 </div>
 

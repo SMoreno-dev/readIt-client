@@ -64,10 +64,10 @@ const Comment = ({id, user, body, date, parentHidden, canDelete}) => {
                     <p className='comment-data'>
                         <Link 
                             className='comment-user'
-                            to={!user === '[deleted]' ? `/user/${user}` : null}>
+                            to={user === '[deleted]' ? '#' : `/user/${user}`}>
                                 {user}
                         </Link>
-                        {`, ${date.slice(0, 10)} T${date.slice (11, 19)}`}
+                        {`, at ${date.slice(0, 10)}`}
                         </p>
                 </div>
 
