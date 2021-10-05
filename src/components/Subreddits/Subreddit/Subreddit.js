@@ -99,7 +99,7 @@ const Subreddit = () => {
                         <p>{subredditData.users} readers</p>
                         <p>{subredditData.description}</p>
                     <hr className="divider"/>
-                        <p>created at {subredditData.createdAt.slice(0, 10)}</p>
+                        <p>a subreadIt since {subredditData.createdAt.slice(0, 10)}</p>
                     <hr className="divider"/>
                         <Link to={`/submit/${subredditName}`}>Submit a New Post</Link>
                 </Col>
