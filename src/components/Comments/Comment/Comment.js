@@ -61,7 +61,11 @@ const Comment = ({id, user, body, date, parentHidden, canDelete}) => {
             <div className='comment-box'>
                 <div className={!hidden ? 'comment-info' : 'comment-info info-hidden'}>
                     <p className='comment-data'>
-                        <p className='comment-user'>{user}</p> 
+                        <Link 
+                            className='comment-user'
+                            to={`/user/${user}`}>
+                                {user}
+                        </Link>
                         {`, ${date.slice(0, 10)} T${date.slice (11, 19)}`}
                         </p>
                 </div>

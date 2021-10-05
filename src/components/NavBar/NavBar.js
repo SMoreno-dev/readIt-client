@@ -39,7 +39,7 @@ const NavBar = () => {
             <div className='nav-end'>
                 <p 
                     className='nav-user'
-                    onClick={() => history.push(`/reddit-clone-client/user/${localStorage.user}`)}
+                    onClick={() => history.push(`/user/${localStorage.user}`)}
                 >
                     {!localStorage.id ? null : localStorage.user}
                 </p>
