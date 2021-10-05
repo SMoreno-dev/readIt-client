@@ -23,6 +23,13 @@ const NavBar = () => {
             >
                 readIt
             </div>
+            <p className='nv-separator'>{" || "}</p>
+            <div 
+                className='nv-subreddits'
+                onClick={() => history.push('/reddit-clone-client/subreddits')}
+                >
+                {`subreddits`}
+            </div>
 
             <div className='nav-end'>
                 <p 

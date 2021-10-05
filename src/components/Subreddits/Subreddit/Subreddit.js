@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 
 import { Link } from "react-router-dom";
-import ErrorPanel from '../ErrorPanel/ErrorPanel';
-import SubscribeButton from "../SubscribeButton/SubscribeButton";
-import PostCollection from "../Posts/PostCollection/PostCollection";
+import ErrorPanel from '../../ErrorPanel/ErrorPanel';
+import SubscribeButton from "../../SubscribeButton/SubscribeButton";
+import PostCollection from "../../Posts/PostCollection/PostCollection";
 
 import { Container, Row, Col } from "react-bootstrap";
 import './Subreddit.css';

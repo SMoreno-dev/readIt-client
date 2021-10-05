@@ -15,6 +15,7 @@ import Profile from '../components/Profile/Profile';
 import CreatePost from '../components/Posts/CreatePost/CreatePost';
 import Subreddit from '../components/Subreddit/Subreddit';
 import Post from '../components/Posts/Post/Post';
+import SubredditList from '../components/Subreddits/SubredditList/SubredditList';
 
 const RootContainer = () => {
     return(
@@ -29,6 +30,7 @@ const RootContainer = () => {
                 <Route exact path="/reddit-clone-client/submit/:subredditName" component={CreatePost}/>
                 <Route exact path="/reddit-clone-client/r/:subredditName" component={Subreddit} />
                 <Route exact path="/reddit-clone-client/r/:subredditName/post=:postId" component={Post} />
+                <Route exact path="/reddit-clone-client/subreddits" component={SubredditList} />
             </Switch>
       </Router>
     )
