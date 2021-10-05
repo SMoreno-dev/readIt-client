@@ -5,13 +5,26 @@
     background-color: rgba(10, 71, 150, 0.63);
 }
 
-.readit-logo {
-    color: white !important;
-    font-weight: 600;
-    font-size: 1.2rem;
+.logo-and-subreddits {
+    display: flex;
     align-items: center;
-    cursor: pointer;
 }
+    .readit-logo {
+        color: white !important;
+        font-weight: 600;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .nv-separator {
+        margin: 0 10%;
+
+    }
+
+    .nv-subreddits {
+        cursor: pointer;
+        line-height: 2rem;
+    }
 
 .nav-end {
     display: flex;

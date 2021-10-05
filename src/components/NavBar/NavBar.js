@@ -17,18 +17,20 @@ const NavBar = () => {
 
     return(
         <div className='nv-container'>
-            <div 
-                className='readit-logo'
-                onClick={() => history.push('/')}
-            >
-                readIt
-            </div>
-            <p className='nv-separator'>{" || "}</p>
-            <div 
-                className='nv-subreddits'
-                onClick={() => history.push('/reddit-clone-client/subreddits')}
+            <div className='logo-and-subreddits'>
+                <div 
+                    className='readit-logo'
+                    onClick={() => history.push('/')}
                 >
-                {`subreddits`}
+                    readIt
+                </div>
+                <p className='nv-separator'>{" || "}</p>
+                <div 
+                    className='nv-subreddits'
+                    onClick={() => history.push('/reddit-clone-client/subreddits')}
+                    >
+                    {`subreddits`}
+                </div>
             </div>
 
             <div className='nav-end'>

@@ -38,7 +38,7 @@ const SubredditList = () => {
         <div className='s-list-box'>
         { error.error ? <ErrorPanel message={error.message} /> : null}
 
-            <h1>List of subreddits</h1>
+            <h2>List of subreddits</h2>
 
             <div className='s-list-body'>
             {
@@ -46,11 +46,12 @@ const SubredditList = () => {
                     <div className='s-list-element'>
                         <Link
                             className='s-list-link'
-                            key={i}
-                            to={`/reddit-clone-client/r/${s}`}>
+                            to={`/reddit-clone-client/r/${s.title}`}>
                                 {s.title}
                         </Link>
-                        <p>{s.info}</p>
+                        <p className='s-list-link-info'>
+                            {s.info}
+                        </p>
                     </div>    
                 ))
             }
