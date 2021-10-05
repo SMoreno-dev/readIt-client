@@ -57,7 +57,7 @@ const CreateReply = ({commentId, reply}) => {
 
     //Not logged in
     if(!localStorage.id) {
-        return <Redirect to='/signin'/>;
+        return <Redirect to='/reddit-clone-client/signin'/>;
     } 
     
     return(

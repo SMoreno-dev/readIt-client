@@ -18,15 +18,15 @@ const PostPreview = ({postId, subreddit, title, user, date, votes, lastVote}) =>
                 <div className='preview-title-details'>
                     <Link 
                         className='preview-title'
-                        to={`/r/${subreddit}/post=${postId}`}>
+                        to={`/reddit-clone-client/r/${subreddit}/post=${postId}`}>
                         {title}
                     </Link>
 
                     <br />
 
                     <p className='preview-details'>
-                    submitted to <Link to={`/r/${subreddit}`}>{subreddit + " "}</Link> 
-                    by <Link to={`/user/${user}`}>{user}</Link> {`at ${date.slice(0,10) + " " + date.slice(11, 19)}`} 
+                    submitted to <Link to={`/reddit-clone-client/r/${subreddit}`}>{subreddit + " "}</Link> 
+                    by <Link to={`/reddit-clone-client/user/${user}`}>{user}</Link> {`at ${date.slice(0,10) + " " + date.slice(11, 19)}`} 
                     </p>
                 </div>
 
