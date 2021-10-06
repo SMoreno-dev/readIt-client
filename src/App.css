@@ -47,3 +47,7 @@ input:focus, textarea:focus, select:focus{
 .link {
     text-decoration: none !important;
 }
+
+:focus {
+    outline: 0;
+}
