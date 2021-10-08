@@ -106,7 +106,7 @@ const CreatePost = ({history, post, setText}) => {
             
             } else {
                 setText('');
-                history.push(`r/${subreddit}/post=${parsedResponse.postId}`); 
+                history.push(`/r/${subreddit}/post=${parsedResponse.postId}`); 
             }
 
         } catch (error) {
