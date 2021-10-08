@@ -21,7 +21,7 @@ const CreatePost = ({history, post, setText}) => {
     const {subredditName} = useParams();
 
     //Error State
-    const [error, setError] = useState({error: false, message: ''});
+    const [error, setError] = useState({error: false, message: '', redirect: false});
 
     //Subscriptions, subreddit, post States
     const [subscriptions, setSubscriptions] = useState([]);
@@ -50,6 +50,14 @@ const CreatePost = ({history, post, setText}) => {
 
             } else {
                 setSubscriptions(parsedResponse.body);
+                const isSubscribed = parsedResponse.body.filter(s => s === subredditName);
+                if(!isSubscribed[0]) {
+                    setError({
+                        error: true,
+                        redirect: `/r/${subredditName}`,
+                        message: `You are not subscribed to r/${subredditName}. Subscribe in order to post`
+                    })
+                }
                 setSubreddit(subredditName);
             }
 
@@ -124,7 +132,8 @@ const CreatePost = ({history, post, setText}) => {
         <> 
             <div className='container-fluid create-post'>
                 {/* Error Panel */}
-                { error.error ? <ErrorPanel message={error.message} /> : null}
+                { error.error && !error.redirect ? <ErrorPanel message={error.message} /> : null}
+                { error.error && error.redirect ? <ErrorPanel message={error.message} redirect={error.redirect} /> : null}
 
                 <div className='create-post-form'>
                     <form>

@@ -145,15 +145,13 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
             }
 
             {
-                previews.length > 10
-                    ? null            
-                    :    
-                        <Button
-                            className='preview-button mb-5'
-                            onClick = {() => setLimit(limit + 10)}
-                        >
-                            Load More
-                        </Button>
+                previews.length < 10 ? null :              
+                    <Button
+                        className='preview-button mb-5'
+                        onClick = {() => setLimit(limit + 10)}
+                    >
+                        Load More
+                    </Button>
             }
 
         </div>

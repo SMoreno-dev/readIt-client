@@ -1,14 +1,21 @@
 import React, {useState} from 'react';
-import './ErrorPanel.css';
 
+import { withRouter } from 'react-router';
+
+import './ErrorPanel.css';
 import {Modal, Button} from 'react-bootstrap';
 
-const SignUpError = ({message}) => {
+const SignUpError = ({history, message, redirect}) => {
     const [show, showPanel] = useState(true)
 
-    const handleClick = () => {
+    const handleReload = () => {
         showPanel(false);
         window.location.reload();
+    }
+
+    const handleRedirect = () => {
+        showPanel(false);
+        history.push(redirect);
     }
 
     return (
@@ -18,7 +25,7 @@ const SignUpError = ({message}) => {
             </Modal.Header>
             <Modal.Body className='panel-message'>{!message ? 'Unknown error. Please try again.' : message}</Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={() => handleClick()}>
+            <Button variant="secondary" onClick={!redirect ? () => handleReload() : () => handleRedirect()}>
                 Try Again
             </Button>
             </Modal.Footer>
@@ -27,4 +34,4 @@ const SignUpError = ({message}) => {
 
 }
 
-export default SignUpError;
+export default withRouter(SignUpError);
