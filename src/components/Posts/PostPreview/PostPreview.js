@@ -5,7 +5,30 @@ import { Link } from 'react-router-dom';
 
 import './PostPreview.css';
 
-const PostPreview = ({postId, subreddit, title, user, date, votes, lastVote}) => {
+const PostPreview = ({postId, subreddit, title, user, date, votes, lastVote, deleted}) => {
+    if(deleted === true) {
+        return(
+            <div className='preview-container'>
+            <div className='preview-box'>
+                <SmallVotes 
+                    votes={votes}
+                    value={null}
+                    postId={postId}
+                />
+
+                <div className='preview-title-details'>
+                    <p className='preview-title'>[deleted]</p>
+
+                    <p className='preview-details'>
+                        submitted to <Link to={`/r/${subreddit}`}>{subreddit}</Link> {" by "} [deleted] {`at ${date.slice(0,10)}`} 
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        )
+    }
+
     return(
         <div className='preview-container'>
             <div className='preview-box'>

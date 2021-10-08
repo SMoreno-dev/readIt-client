@@ -138,13 +138,14 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                             votes = {p.votes}
                             lastVote = {p.lastVote}
                             date = {p.date}
+                            deleted = {p.deleted}
                         />
                     ))
-                : null
+                : <p>No posts yet</p>
             }
 
             {
-                previews.length < 10 
+                previews.length > 10
                     ? null            
                     :    
                         <Button

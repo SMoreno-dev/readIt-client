@@ -116,7 +116,7 @@ const Post = () => {
                     <div className='post-details'>  
                         <p className='post-title' onClick={postTitle !== '[deleted]' ? () => window.location.reload() : null}>{postTitle}</p> 
                         <div className='post-user-date'>
-                            <Link className='post-user' to={postUser !== '[deleted]' ? `/user/${postUser}` : null}>{postUser}</Link>
+                            <Link className='post-user' to={postUser !== '[deleted]' ? `/user/${postUser}` : '#'}>{postUser}</Link>
                             <p className='post-date'>{postDate.slice(0, 10)}</p>
                         </div>
                     </div>

@@ -44,6 +44,7 @@
     padding: 20px;
     border-radius: 10px;
     border: rgb(121, 121, 121) solid 2px !important;
+    line-height: 1.5em;
 }
     
     .delete-post {
