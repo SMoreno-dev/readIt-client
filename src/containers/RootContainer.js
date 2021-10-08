@@ -4,8 +4,6 @@ import {
   Route
 } from 'react-router-dom';
 
-import { Redirect } from 'react-router';
-
 //Components
 import NavBar from '../components/NavBar/NavBar';
 import Frontpage from '../components/Frontpage/Frontpage';
@@ -29,7 +27,7 @@ const RootContainer = () => {
                 <Route exact path="/submit/:subredditName" component={CreatePost}/>
                 <Route exact path="/r/:subredditName" component={Subreddit} />
                 <Route exact path="/r/:subredditName/post=:postId" component={Post} />
-                <Route exact path="/subreddits" component={SubredditList} />
+                <Route exact path="/subreadits" component={SubredditList} />
             </Switch>
       </Router>
     )

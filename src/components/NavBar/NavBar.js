@@ -30,7 +30,7 @@ const NavBar = () => {
                 <p className='nv-separator'>{" || "}</p>
                 <div 
                     className='nv-subreddits'
-                    onClick={() => history.push('/subreddits')}
+                    onClick={() => history.push('/subreadits')}
                     >
                     {`subreadIts`}
                 </div>

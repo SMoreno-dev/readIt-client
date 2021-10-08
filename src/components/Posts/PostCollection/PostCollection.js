@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 import PostPreview  from '../PostPreview/PostPreview';
+import { Link } from 'react-router-dom';
 
 import { Button } from 'react-bootstrap';
 import './PostCollection.css';
@@ -115,6 +116,9 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
         <div>
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <div>
+                { frontpage ? <h2 className='pb-2'>Your feed</h2>: null}
+                {!orderByVotes ? <p>Sorting by new</p> : <p>Sorting by top</p>}
+
                 <Button 
                     className='preview-button'
                     onClick={() => setOrderBy(false)}>
@@ -126,22 +130,37 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                     Top
                 </Button>
             </div>
+
             {
-                previews ?
-                    previews.map((p, i) => (
-                        <PostPreview
-                            key = {i}
-                            postId = {p.postId}
-                            subreddit = {p.subreddit}
-                            title = {p.title}
-                            user = {p.user}
-                            votes = {p.votes}
-                            lastVote = {p.lastVote}
-                            date = {p.date}
-                            deleted = {p.deleted}
-                        />
-                    ))
-                : <p>No posts yet</p>
+                !previews[0] ?
+                    null
+                : previews.map((p, i) => {
+                    if (p.deleted === true && profile) {
+                        return null;
+                    }
+                    return(
+                            <PostPreview
+                                key = {i}
+                                postId = {p.postId}
+                                subreddit = {p.subreddit}
+                                title = {p.title}
+                                user = {p.user}
+                                votes = {p.votes}
+                                lastVote = {p.lastVote}
+                                date = {p.date}
+                                deleted = {p.deleted}
+                            />
+                        )
+                    })
+            }
+
+            {
+                frontpage && !previews[0] ?
+                    <div className='pt-5'>
+                        <p>It seems you're not subscribed to any subreadIts yet.</p>
+                        <Link to='/subreadits'>Check them out.</Link>
+                    </div>
+                : null
             }
 
             {

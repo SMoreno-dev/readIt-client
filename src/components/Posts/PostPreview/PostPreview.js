@@ -12,7 +12,7 @@ const PostPreview = ({postId, subreddit, title, user, date, votes, lastVote, del
             <div className='preview-box'>
                 <SmallVotes 
                     votes={votes}
-                    value={null}
+                    value={lastVote}
                     postId={postId}
                 />
 

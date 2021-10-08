@@ -74,7 +74,8 @@ const Profile = () => {
                         <p>A member of: </p>
                         <p>
                             {
-                                subscriptions.map((e, i) => (
+                                !subscriptions[0] ? 'No subscriptions yet.'
+                                : subscriptions.map((e, i) => (
                                     <Link 
                                         className={'user-subscription'}
                                         key={i} 
