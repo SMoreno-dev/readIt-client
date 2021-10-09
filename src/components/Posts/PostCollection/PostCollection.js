@@ -13,6 +13,7 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
 
     //Post collection state
     const [previews, setPreviews] = useState([]);
+    const [loaded, setLoaded] = useState(false);
     const [orderByVotes, setOrderBy] = useState(false)
     const [limit, setLimit] = useState(10);
 
@@ -36,7 +37,8 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                 return setError({error: true, message: parsedRes.message})
             }
             console.log(parsedRes.body)
-            return setPreviews(parsedRes.body);
+            setPreviews(parsedRes.body);
+            setLoaded(true);
 
         } catch (error) {
             console.log(error);
@@ -65,7 +67,8 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                 return setError({error: true, message: parsedRes.message})
             }
             console.log(parsedRes)
-            return setPreviews(parsedRes.body);
+            setPreviews(parsedRes.body);
+            setLoaded(true);
 
         } catch (error) {
             console.log(error);
@@ -86,13 +89,14 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                     sortByVote: orderByVotes
                 })
             })
+
             const parsedRes = await response.json();
             if(response.status !== 200) {
                 console.log('ERROR');
                 return setError({error: true, message: parsedRes.message})
             }
-            console.log(parsedRes.body)
-            return setPreviews(parsedRes.body);
+            setPreviews(parsedRes.body);
+            setLoaded(true);
 
         } catch (error) {
             console.log(error);
@@ -132,6 +136,19 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
             </div>
 
             {
+                !loaded ? <p className='pb-2 pt-2'>Loading...</p> : null
+            }
+
+            {
+                frontpage && loaded && !previews[0] ?
+                    <div className='pt-5'>
+                        <p>It seems you're not subscribed to any subreadIts yet.</p>
+                        <Link to='/subreadits'>Check them out.</Link>
+                    </div>
+                : null
+            }
+
+            {
                 !previews[0] ?
                     null
                 : previews.map((p, i) => {
@@ -152,15 +169,6 @@ const PostCollection = ({frontpage, subreddit, profile}) => {
                             />
                         )
                     })
-            }
-
-            {
-                frontpage && !previews[0] ?
-                    <div className='pt-5'>
-                        <p>It seems you're not subscribed to any subreadIts yet.</p>
-                        <Link to='/subreadits'>Check them out.</Link>
-                    </div>
-                : null
             }
 
             {
