@@ -92,12 +92,7 @@ const Subreddit = () => {
                             {subredditData.name}
                         </h2>
                         
-                        {
-                            !localStorage.id ? null 
-                            : <SubscribeButton isSubscribed={subredditData.isSubscribed} />
-                        }
-                        
-
+                        <SubscribeButton isSubscribed={subredditData.isSubscribed} />
                     </div>
 
                     <hr className="divider"/>

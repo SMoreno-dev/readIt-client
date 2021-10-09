@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 
 import './Votes.css';
 
-const Votes = () => {
+const Votes = ({history}) => {
 
     //State
     const [error, setError] = useState({error: false, message: ''});
@@ -124,19 +125,25 @@ const Votes = () => {
         }
     }
 
+    //Redirect function
+    const redirect = () => {
+        return history.push('/signin')
+    }
+
+
     return(
         <div className="vote-body">
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <p 
                 className={status === true ? 'up' : '' }
-                onClick={!userId ? null : () => upvoteHandler()}
+                onClick={!userId ? () => redirect() : () => upvoteHandler()}
             >
                 ↑
             </p>
             <p className="votes">{currentVotes}</p>
             <p 
                 className={status === false ? 'down' : '' }
-                onClick={!userId ? null : () => downvoteHandler()}
+                onClick={!userId ? () => redirect() : () => downvoteHandler()}
             >
                 ↓
             </p>
@@ -150,4 +157,4 @@ const Votes = () => {
 }
 
 
-export default Votes;
+export default withRouter(Votes);

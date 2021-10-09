@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router';
 
 import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 
 import './SmallVotes.css';
 
-const SmallVotes = ({postId, votes, value}) => {
+const SmallVotes = ({history, postId, votes, value}) => {
     //State
     const [error, setError] = useState({error: false, message: ''});
     const [status, setStatus] = useState(null);
@@ -92,19 +93,23 @@ const SmallVotes = ({postId, votes, value}) => {
         }
     }
 
+    //Redirect
+    const redirect = () => {
+        return history.push('/signin')
+    }    
     return (
         <div className="small-vote-body">
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <p 
                 className={status === true ? 'small-up' : '' }
-                onClick={!localStorage.id ? null : () => upvoteHandler()}
+                onClick={!localStorage.id ? () => redirect() : () => upvoteHandler()}
             >
                 ↑
             </p>
             <p className="small-votes">{currentVotes}</p>
             <p 
                 className={status === false ? 'small-down' : '' }
-                onClick={!localStorage.id ? null : () => downvoteHandler()}
+                onClick={!localStorage.id ? () => redirect() : () => downvoteHandler()}
             >
                 ↓
             </p>
@@ -112,4 +117,4 @@ const SmallVotes = ({postId, votes, value}) => {
     )
 }
 
-export default SmallVotes;
+export default withRouter(SmallVotes);

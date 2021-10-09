@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
-
-import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { withRouter } from 'react-router';
+
 import ErrorPanel from '../../ErrorPanel/ErrorPanel';
 
+import { Button } from 'react-bootstrap';
 import './SubscribeButton.css';
 
-const SubscribeButton = ({isSubscribed}) => {
+const SubscribeButton = ({history, isSubscribed}) => {
     //Params
     const {subredditName} = useParams();
 
@@ -30,14 +31,12 @@ const SubscribeButton = ({isSubscribed}) => {
             })
 
             const parsedRes = await response.json();
-            console.log(parsedRes)
             if(response.status !==200) {
                 return setError({
                     error: true,
                     message: parsedRes.message
                 })
             }
-            console.log(parsedRes.message);
 
         } catch (err) {
             console.log(err);
@@ -61,12 +60,16 @@ const SubscribeButton = ({isSubscribed}) => {
         }
     }
 
+    const redirect = () => {
+        return history.push('/signin');
+    }
+
     return (
         <>
             { error.error ? <ErrorPanel message={error.message} /> : null}
             <Button
                 className={subscribed ? 'join btn-primary shadow-none' : 'leave btn-danger shadow-none'}
-                onClick={() => buttonHandler()}
+                onClick={!localStorage.id ? () => redirect() : () => buttonHandler()}
                 >
                 <p>{!subscribed ? 'join' : 'leave'}</p>
             </Button>
@@ -75,4 +78,4 @@ const SubscribeButton = ({isSubscribed}) => {
     )
 }
 
-export default SubscribeButton;
+export default withRouter(SubscribeButton);
