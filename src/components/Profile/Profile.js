@@ -44,7 +44,6 @@ const Profile = () => {
                 })
 
             } else {
-                console.log(parsedResponse.body)
                 setSubscriptions(parsedResponse.body);
             }
 
@@ -66,7 +65,12 @@ const Profile = () => {
                         className='profile-title'
                         >{`Posts from ${user}`}
                     </p>
-                    <PostCollection profile = {user} />
+                    <PostCollection 
+                        page = {{
+                            type: false,
+                            value: user
+                        }} 
+                    />
                 </div>
 
                 <div className='user-subscriptions'>

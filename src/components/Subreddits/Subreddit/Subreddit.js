@@ -75,7 +75,12 @@ const Subreddit = () => {
 
             <Row>
                 <Col sm={9}>
-                    <PostCollection subreddit = {subredditName} />
+                    <PostCollection 
+                        page = {{
+                            type: true,
+                            value: subredditName
+                        }}
+                    />
                 </Col>
 
                 <Col sm={3} className='subreddit-info'>
