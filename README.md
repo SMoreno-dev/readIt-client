@@ -95,6 +95,12 @@ Now you can log into the `readit` database as `readit_app`:
 psql -U readdit_app readit
 ```
 
+Add the `uuid-ossp` extension. This will be necessary to create the `users` table.
+
+```
+CREATE EXTENSION "uuid-ossp";
+```
+
 Finally, run the query described in [database.sql](https://github.com/SMoreno-dev/readIt-server/blob/main/database.sql)   
 
 ### Setting up Node.js
