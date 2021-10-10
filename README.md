@@ -13,7 +13,7 @@ Features include:
 * A personalized frontpage feed for registered users, based on these subscriptions. 
 * A voting system, where votes can be cast on posts by any registered users. 
 * Through this voting system, posts may be sorted not just chronologically, but also based on their popularity.
-* A comment section, perhaps the most difficult part to develop, which allows for nested reply threads. The biggest challenge during the development of this feature was figuring out a database design that made this kind of recursive logic possible. 
+* A comment section on each post, which allows for nested reply threads. The biggest challenge during the development of this feature was figuring out a database design that made this kind of recursive logic possible. 
 
 ## Screenshots
 
