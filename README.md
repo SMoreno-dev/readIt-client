@@ -1,6 +1,6 @@
 # ReadIt 
 
-This is the client-side/front-end repo. You can find the server-side/back-end repo [here](https://github.com/SMoreno-dev/readIt-server).
+This is the client-side/frontend repo. You can find the server-side/backend repo [here](https://github.com/SMoreno-dev/readIt-server).
 
 >You can visit the demo [here](https://readit-client-1.herokuapp.com/).
 
