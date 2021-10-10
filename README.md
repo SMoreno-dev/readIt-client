@@ -14,6 +14,53 @@ This is the client-side/front-end repo. You can find the server-side/back-end re
 |<img width="768" alt="Post" src="https://user-images.githubusercontent.com/67179213/136680844-32fd885f-e9bb-48e4-a104-18722d7484a2.png">Single Post Page|  <img width="768" alt="Post Comments" src="https://user-images.githubusercontent.com/67179213/136681000-6a701602-c29d-44ac-ace7-610ac6f7600c.png">Comments and Nested Replies|<img width="768" alt="Sign In" src="https://user-images.githubusercontent.com/67179213/136680881-bf52d7ad-03f0-40e2-9a9e-41d06ec84c1e.png">Sign In Page|
 |<img width="768" alt="Sign Up" src="https://user-images.githubusercontent.com/67179213/136680911-40d1b611-1a2f-474e-a195-257cc1dfc760.png">Sign Up Page|<img width="768" alt="Subreddit" src="https://user-images.githubusercontent.com/67179213/136680927-475ea939-6cfc-418d-8be6-a83aa54e9b00.png">Subreddit Page|<img width="768" alt="Subreddit List" src="https://user-images.githubusercontent.com/67179213/136680943-ce738d9f-3775-4fb6-bfae-c9a7bbfca7ec.png">Subreddit List Page|
 
+## Dependencies
+
+### Front End Dependencies
+
+| Library Name | Description |
+| ----------- | ----------- |
+| `bootstrap`     | Open-source, front-end, responsive css framework |
+| `react-bootstrap`  | Bootstrap components built with React |
+| `redux` | Predictable state container for javascript apps |
+| `react-redux` | Official React bindings for Redux |
+|`react-router`| Declarative routing for React |
+|`react-router-dom`| DOM bindings for react-router |
+
+### Back End Dependencies
+
+| Library Name | Description |
+| ----------- | ----------- |
+|`bcrypt`| A library to help in hashing passwords |
+|`express`| Web framework for Node.js |
+|`cors`| Provides a Connect/Express middleware that can be used to enable CORS |
+|`pg`| 	Non-blocking PostgreSQL client for Node.js |
+
+
+## API Endpoints
+
+| API | VERB | Parameters | Description |
+| ----------- | ----------- | ----------- | ----------- |
+| /auth/signup | POST | (user, email, password) | Sign Up |
+| /auth/signin | POST | (user, password) | Sign In |
+| /comment/get-comments | POST | (userId, postId) | Comments for a single post |
+| /comment/submit-comment | POST | (userId, comment, postId | Creates a comment for a post |
+| /comment/delete-comment| POST | (userId, commentId) | Deletes a comment |
+| /comment/get-replies | POST | (userId, commentId | Replies for a single comment |
+| /comment/submit-reply | POST | (userId, reply, prevCommentId) | Creates a reply for a comment |
+| /frontpage/feed | POST | (userId, sortByVote, limit) | Previews for posts from different subreddits |
+| /post/submit | POST | (id, subreddit, title, post) | Creates a post |
+| /post/fetch | POST | (userId, subredditName, postId) | A post |
+| /post/vote | POST | (userId, postId, vote) | Submits an upvote or upvote for a post |
+| /post/votes | POST | (userId, postId) | Upvotes or downvotes for a single post |
+| /post/delete | POST | (userId, postId) | Deletes a post |
+| /subreddit/subscribe | POST | (subreddit, userId, subscription) | Subscribes an user to a subreddit |
+| /subreddit/data | POST | (subredditName, userId) | Subreddit information |
+| /subreddit/list | GET | none | List of subreddits |
+| /subreddit/previews | POST | (userId, subredditName, limit, orderByVotes) | Previews for posts from a single subreddit |
+| /user/posts | POST | (userId, profileUser, limit, orderByVotes) | Previews for posts from a single user |
+| /user/subscriptions | POST | (userId, username) | List of subscriptions for a single user |
+
 ## Guide
  
 ### Setting up the database
@@ -123,50 +170,3 @@ Windows
 ```
 "start": "PORT=3006 && react-scripts start"
 ```
-
-## Dependencies
-
-### Front End Dependencies
-
-| Library Name | Description |
-| ----------- | ----------- |
-| `bootstrap`     | Open-source, front-end, responsive css framework |
-| `react-bootstrap`  | Bootstrap components built with React |
-| `redux` | Predictable state container for javascript apps |
-| `react-redux` | Official React bindings for Redux |
-|`react-router`| Declarative routing for React |
-|`react-router-dom`| DOM bindings for react-router |
-
-### Back End Dependencies
-
-| Library Name | Description |
-| ----------- | ----------- |
-|`bcrypt`| A library to help in hashing passwords |
-|`express`| Web framework for Node.js |
-|`cors`| Provides a Connect/Express middleware that can be used to enable CORS |
-|`pg`| 	Non-blocking PostgreSQL client for Node.js |
-
-
-## API Endpoints
-
-| API | VERB | Parameters | Description |
-| ----------- | ----------- | ----------- | ----------- |
-| /auth/signup | POST | (user, email, password) | Sign Up |
-| /auth/signin | POST | (user, password) | Sign In |
-| /comment/get-comments | POST | (userId, postId) | Comments for a single post |
-| /comment/submit-comment | POST | (userId, comment, postId | Creates a comment for a post |
-| /comment/delete-comment| POST | (userId, commentId) | Deletes a comment |
-| /comment/get-replies | POST | (userId, commentId | Replies for a single comment |
-| /comment/submit-reply | POST | (userId, reply, prevCommentId) | Creates a reply for a comment |
-| /frontpage/feed | POST | (userId, sortByVote, limit) | Previews for posts from different subreddits |
-| /post/submit | POST | (id, subreddit, title, post) | Creates a post |
-| /post/fetch | POST | (userId, subredditName, postId) | A post |
-| /post/vote | POST | (userId, postId, vote) | Submits an upvote or upvote for a post |
-| /post/votes | POST | (userId, postId) | Upvotes or downvotes for a single post |
-| /post/delete | POST | (userId, postId) | Deletes a post |
-| /subreddit/subscribe | POST | (subreddit, userId, subscription) | Subscribes an user to a subreddit |
-| /subreddit/data | POST | (subredditName, userId) | Subreddit information |
-| /subreddit/list | GET | none | List of subreddits |
-| /subreddit/previews | POST | (userId, subredditName, limit, orderByVotes) | Previews for posts from a single subreddit |
-| /user/posts | POST | (userId, profileUser, limit, orderByVotes) | Previews for posts from a single user |
-| /user/subscriptions | POST | (userId, username) | List of subscriptions for a single user |
