@@ -31,7 +31,7 @@ const CreatePost = ({history, post, setText}) => {
     //useEffect function
     const fetchSubscription = async() => {
         try {
-            const response = await fetch('https://readit-server-1.herokuapp.com/subreddit/subscriptions', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/user/subscriptions', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
