@@ -60,8 +60,8 @@ Features include:
 | /frontpage/feed | POST | (userId, sortByVote, limit) | Previews for posts from different subreddits |
 | /post/submit | POST | (id, subreddit, title, post) | Creates a post |
 | /post/fetch | POST | (userId, subredditName, postId) | A post |
-| /post/vote | POST | (userId, postId, vote) | Submits an upvote or upvote for a post |
-| /post/votes | POST | (userId, postId) | Upvotes or downvotes for a single post |
+| /post/vote | POST | (userId, postId, vote) | Submits an "upvote" or "downvote" for a post |
+| /post/votes | POST | (userId, postId) | Votes for a single post |
 | /post/delete | POST | (userId, postId) | Deletes a post |
 | /subreddit/subscribe | POST | (subreddit, userId, subscription) | Subscribes an user to a subreddit |
 | /subreddit/data | POST | (subredditName, userId) | Subreddit information |
