@@ -170,5 +170,3 @@ Windows
 | /subreddit/previews | POST | (userId, subredditName, limit, orderByVotes) | Previews for posts from a single subreddit |
 | /user/posts | POST | (userId, profileUser, limit, orderByVotes) | Previews for posts from a single user |
 | /user/subscriptions | POST | (userId, username) | List of subscriptions for a single user |
-
-
