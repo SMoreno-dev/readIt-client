@@ -1,7 +1,17 @@
 # ReadIt 
-A reddit clone made using PERN.
 
 This is the client-side/front-end repo. You can find the server-side/back-end repo [here](https://github.com/SMoreno-dev/readIt-server).
+
+
+This project integrates React frontend with Node.js backend through a REST API.  
+I modelled its business logic after [Reddit](http://reddit.com/), a popular social network based around forum-like content boards called "subreddits".
+
+Features include:
+	-Creation and authentication of users, necessary to gain access to any kind of action besides reading the subreddits.
+	-A subscription service, so that members of each subreddit have the ability to create text-based posts (as well as delete the ones they own). 
+	-A voting system, where votes can be cast on posts by any registered users. 
+	-Through this voting system, posts may be sorted not just chronologically, but also based on their popularity.
+	-A comment section, perhaps the most difficult part to develop, which allows for nested reply threads. The biggest challenge during the development of this feature was figuring out a database design that made this kind of recursive logic possible. 
 
 >You can visit the demo [here](https://readit-client-1.herokuapp.com/).
 
