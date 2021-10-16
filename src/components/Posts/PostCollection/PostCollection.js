@@ -55,7 +55,7 @@ const PostCollection = ({page}) => {
                     limit: limit,
                     orderByVotes: orderByVotes
                 }
-                route = 'https://readit-server-1.herokuapp.com/subreddit/previews'
+                route = 'https://readit-server-1.herokuapp.com/subreddit/feed'
                 break;
 
             default: 

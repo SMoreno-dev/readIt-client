@@ -93,7 +93,7 @@ const CreatePost = ({history, post, setText}) => {
                 })
             }
 
-            const response = await fetch('https://readit-server-1.herokuapp.com/post/submit', {
+            const response = await fetch('https://readit-server-1.herokuapp.com/post/new', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
